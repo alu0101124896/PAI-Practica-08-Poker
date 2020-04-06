@@ -59,10 +59,18 @@ describe('Card Class', () => {
   });
 
   describe('Card to string', () => {
-    let myCard = new CardTest();
+    const myCard = new CardTest();
 
     it('Default values', () => {
       expect(myCard.toString()).to.be.equal('Two of Clubs');
+    });
+
+    const suit = 'Diamonds';
+    const rank = 'A';
+    const myModifiedCard = new CardTest(suit, rank);
+
+    it('Modified values', () => {
+      expect(myModifiedCard.toString()).to.be.equal('Ace of Diamonds');
     });
   });
 });

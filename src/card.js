@@ -26,6 +26,12 @@ class Card {
     this.rank = rank;
   }
 
+  /**
+   * @description Function that generates a human readable string with the rank and suit of the card
+   *
+   * @returns {string} Returns a string with the suit and rank
+   * @memberof Card
+   */
   toString() {
     let rankString = '';
     switch (this.rank) {
