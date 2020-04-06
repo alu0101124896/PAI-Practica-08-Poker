@@ -34,5 +34,9 @@ describe('Card Class', () => {
     it('Card has a rank', () => {
       expect(myCard).have.property('rank').that.is.a('string');
     });
+
+    it('Default rank is two', () => {
+      expect(myCard.rank).to.be.equal('Two');
+    });
   });
 });
