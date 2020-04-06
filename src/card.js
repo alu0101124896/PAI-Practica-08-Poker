@@ -21,8 +21,9 @@ class Card {
    *
    * @memberof Card
    */
-  constructor(suit = 'Clubs') {
+  constructor(suit = 'Clubs', rank = 'Two') {
     this.suit = suit;
+    this.rank = rank;
   }
 }
 
