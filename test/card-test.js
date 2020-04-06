@@ -16,10 +16,10 @@ import { CardTest as _CardTest } from '../src/card.js';
 const CardTest = _CardTest;
 
 describe('Card Class', () => {
-  describe('Properties', () => {
+  describe('Default properties', () => {
     let myCard;
 
-    beforeEach(()=>{
+    beforeEach(() => {
       myCard = new CardTest();
     });
 
@@ -27,16 +27,34 @@ describe('Card Class', () => {
       expect(myCard).have.property('suit').that.is.a('string');
     });
 
-    it('Default suit is Clubs', () => {
-      expect(myCard.suit).to.be.equal('Clubs');
-    });
-
     it('Card has a rank', () => {
       expect(myCard).have.property('rank').that.is.a('string');
     });
 
+    it('Default suit is Clubs', () => {
+      expect(myCard.suit).to.be.equal('Clubs');
+    });
+
     it('Default rank is two', () => {
       expect(myCard.rank).to.be.equal('Two');
+    });
+  });
+
+  describe('Not default property values', () => {
+    let myCard, suit, rank;
+
+    beforeEach(() => {
+      suit = 'Diamonds';
+      rank = 'Ace';
+      myCard = new CardTest(suit, rank)
+    });
+
+    it('Modifies default suit correctly', () => {
+      expect(myCard.suit).to.be.equal(suit);
+    });
+
+    it('Modifies default rank correctly', () => {
+      expect(myCard.rank).to.be.equal(rank);
     });
   });
 });
