@@ -62,7 +62,7 @@ describe('Card Class', () => {
     let myCard = new CardTest();
 
     it('Default values', () => {
-      expect(myCard.toSrting()).to.be.equal('Two of Clubs');
+      expect(myCard.toString()).to.be.equal('Two of Clubs');
     });
   });
 });
