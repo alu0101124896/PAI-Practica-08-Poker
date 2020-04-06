@@ -16,4 +16,15 @@ import { CardTest as _CardTest } from '../src/card.js';
 const CardTest = _CardTest;
 
 describe('Card Class', () => {
+  let myCard;
+
+  beforeEach(()=>{
+    myCard = new CardTest();
+  });
+
+  describe('Properties', () => {
+    it('Card has a suit', () => {
+      expect(myCard).have.property('suit');
+    });
+  });
 });
