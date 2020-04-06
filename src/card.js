@@ -21,7 +21,9 @@ class Card {
    *
    * @memberof Card
    */
-  constructor() {}
+  constructor(suit = 'Club') {
+    this.suit = suit;
+  }
 }
 
 export const CardTest = Card;
