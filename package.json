@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node web-server/app.js",
     "test": "mocha --require @babel/register",
-    "test:watch": "mocha --watch"
+    "test:watch": "mocha --watch --require @babel/register"
   },
   "author": "Sergio Tabares",
   "license": "MIT",

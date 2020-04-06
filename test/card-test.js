@@ -16,15 +16,19 @@ import { CardTest as _CardTest } from '../src/card.js';
 const CardTest = _CardTest;
 
 describe('Card Class', () => {
-  let myCard;
-
-  beforeEach(()=>{
-    myCard = new CardTest();
-  });
-
   describe('Properties', () => {
+    let myCard;
+
+    beforeEach(()=>{
+      myCard = new CardTest();
+    });
+
     it('Card has a suit', () => {
-      expect(myCard).have.property('suit');
+      expect(myCard).have.property('suit').that.is.a('string');
+    });
+
+    it('Default suit is Clubs', () => {
+      expect(myCard.suit).to.be.equal('Clubs');
     });
   });
 });
