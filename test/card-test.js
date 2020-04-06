@@ -40,7 +40,7 @@ describe('Card Class', () => {
     });
   });
 
-  describe('Not default property values', () => {
+  describe('Non default property values', () => {
     let myCard, suit, rank;
 
     beforeEach(() => {
@@ -71,6 +71,20 @@ describe('Card Class', () => {
 
     it('Modified values', () => {
       expect(myModifiedCard.toString()).to.be.equal('Ace of Diamonds');
+    });
+  });
+
+  describe('Compare', () => {
+    const spades = 'S';
+    const three = '3';
+    const threeOfSpades = new CardTest(spades, three);
+
+    const diamonds = 'D';
+    const eight = '8';
+    const eightOfDiamonds = new CardTest(diamonds, eight);
+
+    it('Spades > Diamonds', () => {
+      expect(CardTest.compare(threeOfSpades, eightOfDiamonds)).to.be.equal(true);
     });
   });
 });
