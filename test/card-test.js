@@ -30,5 +30,9 @@ describe('Card Class', () => {
     it('Default suit is Clubs', () => {
       expect(myCard.suit).to.be.equal('Clubs');
     });
+
+    it('Card has a rank', () => {
+      expect(myCard).have.property('rank').that.is.a('string');
+    });
   });
 });
