@@ -35,8 +35,8 @@ describe('Card Class', () => {
       expect(myCard.suit).to.be.equal('Clubs');
     });
 
-    it('Default rank is two', () => {
-      expect(myCard.rank).to.be.equal('Two');
+    it('Default rank is Two', () => {
+      expect(myCard.rank).to.be.equal('2');
     });
   });
 
@@ -45,7 +45,7 @@ describe('Card Class', () => {
 
     beforeEach(() => {
       suit = 'Diamonds';
-      rank = 'Ace';
+      rank = 'A';
       myCard = new CardTest(suit, rank)
     });
 
@@ -55,6 +55,14 @@ describe('Card Class', () => {
 
     it('Modifies default rank correctly', () => {
       expect(myCard.rank).to.be.equal(rank);
+    });
+  });
+
+  describe('Card to string', () => {
+    let myCard = new CardTest();
+
+    it('Default values', () => {
+      expect(myCard.toSrting()).to.be.equal('Two of Clubs');
     });
   });
 });
