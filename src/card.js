@@ -9,6 +9,16 @@
 
 "use strict";
 
+const SPADES = 'S';
+const HEARTS = 'H';
+const DIAMONDS = 'D';
+const CLUBS = 'C';
+
+const ACE = 'A';
+const JACK = 'J';
+const QUEEN = 'Q';
+const KING = 'K';
+
 /**
  * @description Class representing a complex number
  *
@@ -21,7 +31,7 @@ class Card {
    *
    * @memberof Card
    */
-  constructor(suit = 'C', rank = '2') {
+  constructor(suit = CLUBS, rank = '2') {
     this.suit = suit;
     this.rank = rank;
   }
@@ -81,16 +91,16 @@ class Card {
         break;
     }
     switch (this.suit) {
-      case 'S':
+      case SPADES:
         suitString = 'Spades';
         break;
-      case 'H':
+      case HEARTS:
         suitString = 'Hearts';
         break;
-      case 'D':
+      case DIAMONDS:
         suitString = 'Diamonds';
         break;
-      case 'C':
+      case CLUBS:
         suitString = 'Clubs';
         break;
 
@@ -99,6 +109,38 @@ class Card {
         break;
     }
     return rankString + ' of ' + suitString;
+  }
+
+  static compare(cardOne, cardTwo) {
+    if (cardOne.suit === SPADES) {
+      if (cardTwo.suit === SPADES) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.suit === HEARTS) {
+      if (cardTwo.suit === SPADES) {
+        return -1;
+      } else if (cardTwo.suit === HEARTS) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.suit === DIAMONDS) {
+      if ((cardTwo.suit === SPADES) || (cardTwo.suit === HEARTS)) {
+        return -1;
+      } else if (cardTwo.suit === DIAMONDS) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else {
+      if ((cardTwo.suit === SPADES) || (cardTwo.suit === HEARTS) || (cardTwo.suit === DIAMONDS)) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
   }
 }
 

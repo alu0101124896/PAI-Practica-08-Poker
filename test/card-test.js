@@ -84,7 +84,7 @@ describe('Card Class', () => {
     const eightOfDiamonds = new CardTest(diamonds, eight);
 
     it('Spades > Diamonds', () => {
-      expect(CardTest.compare(threeOfSpades, eightOfDiamonds)).to.be.equal(true);
+      expect(CardTest.compare(threeOfSpades, eightOfDiamonds)).to.be.equal(1);
     });
   });
 });
