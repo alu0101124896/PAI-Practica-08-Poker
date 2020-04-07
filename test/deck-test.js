@@ -58,7 +58,7 @@ describe('Deck Class', () => {
 
     it('Add a card', () => {
       myDeck.addCard(aceOfClubs);
-      expect(myDeck.cards[myDeck.cards.length]).to.be.deep.equal(aceOfClubs);
+      expect(myDeck.cards[myDeck.cards.length - 1]).to.be.deep.equal(aceOfClubs);
     });
   });
 });

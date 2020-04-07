@@ -62,6 +62,10 @@ class Deck {
     this.cards.splice(0, 1);
     return firstCard;
   }
+
+  addCard(newCard) {
+    this.cards.push(newCard);
+  }
 }
 
 export const DeckTest = Deck;
