@@ -50,6 +50,12 @@ class Deck {
     });
     return deckString;
   }
+
+  popCard() {
+    let firstCard = this.cards[0];
+    this.cards.splice(0, 1);
+    return firstCard;
+  }
 }
 
 export const DeckTest = Deck;

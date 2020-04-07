@@ -121,7 +121,7 @@ class Card {
   }
 
   /**
-   * @description Function that compares two cards to see which one has the higher value
+   * @description Function that compares two cards to see which one has the higher suit. In case of tie, calls the rankComparator function
    *
    * @static
    * @param {Card} cardOne - First card to compare
@@ -161,6 +161,15 @@ class Card {
     }
   }
 
+  /**
+   * @description Function that compares two cards to see which one has the higher rank
+   *
+   * @static
+   * @param {Card} cardOne - First card to compare
+   * @param {Card} cardTwo - Second card to compare
+   * @returns {Card} Returns the card with the higest rank
+   * @memberof Card
+   */
   static rankComparator(cardOne, cardTwo) {
     if (cardOne.rank === ACE) {
       return cardOne;

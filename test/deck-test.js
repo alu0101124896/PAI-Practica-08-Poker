@@ -44,7 +44,7 @@ describe('Deck Class', () => {
   describe('Deck methods', () => {
     const suit = 'C';
     const rank = 'A';
-    const aceOfClubs = new CardTest(suit, rank)
+    const aceOfClubs = new CardTest(suit, rank);
     const myDeck = new DeckTest();
 
     it('Pop first card', () => {
