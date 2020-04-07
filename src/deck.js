@@ -51,6 +51,12 @@ class Deck {
     return deckString;
   }
 
+  /**
+   * @description Function that removes the first card from the deck and returns it
+   *
+   * @returns {Card} Returns the first card of the deck
+   * @memberof Deck
+   */
   popCard() {
     let firstCard = this.cards[0];
     this.cards.splice(0, 1);

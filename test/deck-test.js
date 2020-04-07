@@ -42,13 +42,23 @@ describe('Deck Class', () => {
   });
 
   describe('Deck methods', () => {
-    const suit = 'C';
-    const rank = 'A';
-    const aceOfClubs = new CardTest(suit, rank);
-    const myDeck = new DeckTest();
+    const clubs = 'C';
+    const ace = 'A';
+    const aceOfClubs = new CardTest(clubs, ace);
+
+    let myDeck;
+
+    beforeEach(() => {
+      myDeck = new DeckTest();
+    });
 
     it('Pop first card', () => {
       expect(myDeck.popCard()).to.be.deep.equal(aceOfClubs);
+    });
+
+    it('Add a card', () => {
+      myDeck.addCard(aceOfClubs);
+      expect(myDeck.cards[myDeck.cards.length]).to.be.deep.equal(aceOfClubs);
     });
   });
 });
