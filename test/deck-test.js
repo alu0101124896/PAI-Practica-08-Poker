@@ -16,4 +16,16 @@ import { DeckTest as _DeckTest } from '../src/deck.js';
 const DeckTest = _DeckTest;
 
 describe('Deck Class', () => {
+  describe('Default properties', () => {
+    let myDeck;
+
+    beforeEach(() => {
+      myDeck = new DeckTest();
+    });
+
+    it('Deck has an array of cards', () => {
+      expect(myDeck).to.have.property('cards');
+      expect(myDeck.cards).to.be.an('array');
+    });
+  });
 });
