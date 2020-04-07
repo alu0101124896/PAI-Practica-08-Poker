@@ -28,6 +28,12 @@ class Deck {
    * @memberof Deck
    */
   constructor() {
+    this.cards = [];
+    SUITS.forEach(suit => {
+      RANKS.forEach(rank => {
+        this.cards.push(new Card(suit, rank));
+      });
+    });
   }
 }
 
