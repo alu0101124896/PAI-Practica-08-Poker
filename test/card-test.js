@@ -86,15 +86,15 @@ describe('Card Class', () => {
     const eightOfDiamonds = new CardTest(diamonds, eight);
 
     it('Tree of Spades > Eight of Diamonds', () => {
-      expect(CardTest.compare(threeOfSpades, eightOfDiamonds)).to.be.equal(1);
-      expect(CardTest.compare(eightOfDiamonds, threeOfSpades)).to.be.equal(-1);
+      expect(CardTest.compare(threeOfSpades, eightOfDiamonds)).to.be.deep.equal(threeOfSpades);
+      expect(CardTest.compare(eightOfDiamonds, threeOfSpades)).to.be.deep.equal(threeOfSpades);
     });
 
     const eightOfSpades = new CardTest(spades, eight);
 
     it('Eight of Spades > Three of Spades', () => {
-      expect(CardTest.compare(eightOfSpades, threeOfSpades)).to.be.equal(1);
-      expect(CardTest.compare(threeOfSpades, eightOfSpades)).to.be.equal(-1);
+      expect(CardTest.compare(eightOfSpades, threeOfSpades)).to.be.deep.equal(eightOfSpades);
+      expect(CardTest.compare(threeOfSpades, eightOfSpades)).to.be.deep.equal(eightOfSpades);
     });
   });
 });

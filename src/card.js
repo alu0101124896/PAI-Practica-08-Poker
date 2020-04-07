@@ -120,32 +120,41 @@ class Card {
     return rankString + ' of ' + suitString;
   }
 
+  /**
+   * @description Function that compares two cards to see which one has the higher value
+   *
+   * @static
+   * @param {Card} cardOne - First card to compare
+   * @param {Card} cardTwo - Second card to compare
+   * @returns {Card} Returns the card with the higest value
+   * @memberof Card
+   */
   static compare(cardOne, cardTwo) {
     if (cardOne.suit === SPADES) {
       if (cardTwo.suit === SPADES) {
         return Card.rankComparator(cardOne, cardTwo);
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.suit === HEARTS) {
       if (cardTwo.suit === SPADES) {
-        return -1;
+        return cardTwo;
       } else if (cardTwo.suit === HEARTS) {
         return Card.rankComparator(cardOne, cardTwo);
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.suit === DIAMONDS) {
       if ((cardTwo.suit === SPADES) || (cardTwo.suit === HEARTS)) {
-        return -1;
+        return cardTwo;
       } else if (cardTwo.suit === DIAMONDS) {
         return Card.rankComparator(cardOne, cardTwo);
       } else {
-        return 1;
+        return cardOne;
       }
     } else {
       if ((cardTwo.suit === SPADES) || (cardTwo.suit === HEARTS) || (cardTwo.suit === DIAMONDS)) {
-        return -1;
+        return cardTwo;
       } else {
         return Card.rankComparator(cardOne, cardTwo);
       }
@@ -154,105 +163,75 @@ class Card {
 
   static rankComparator(cardOne, cardTwo) {
     if (cardOne.rank === ACE) {
-      if (cardTwo.rank === ACE) {
-        return 0;
-      } else {
-        return 1;
-      }
+      return cardOne;
     } else if (cardOne.rank === KING) {
       if (cardTwo.rank === ACE) {
-        return -1;
-      } else if (cardTwo.rank === KING) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === QUEEN) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING)) {
-        return -1;
-      } else if (cardTwo.rank === QUEEN) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === JACK) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN)) {
-        return -1;
-      } else if (cardTwo.rank === JACK) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === TEN) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK)) {
-        return -1;
-      } else if (cardTwo.rank === TEN) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === NINE) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN)) {
-        return -1;
-      } else if (cardTwo.rank === NINE) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === EIGHT) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE)) {
-        return -1;
-      } else if (cardTwo.rank === EIGHT) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === SEVEN) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT)) {
-        return -1;
-      } else if (cardTwo.rank === SEVEN) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === SIX) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN)) {
-        return -1;
-      } else if (cardTwo.rank === SIX) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === FIVE) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX)) {
-        return -1;
-      } else if (cardTwo.rank === FIVE) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === FOUR) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX) || (cardTwo.rank === FIVE)) {
-        return -1;
-      } else if (cardTwo.rank === FOUR) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
     } else if (cardOne.rank === THREE) {
       if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX) || (cardTwo.rank === FIVE) || (cardTwo.rank === FOUR)) {
-        return -1;
-      } else if (cardTwo.rank === THREE) {
-        return 0;
+        return cardTwo;
       } else {
-        return 1;
+        return cardOne;
       }
-    } else if (cardOne.rank === TWO) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX) || (cardTwo.rank === FIVE) || (cardTwo.rank === FOUR)) {
-        return -1;
-      } else {
-        return 0;
-      }
+    } else {
+      return cardTwo;
     }
   }
 }

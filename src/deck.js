@@ -30,21 +30,23 @@ class Deck {
   constructor() {
     this.cards = [];
     SUITS.forEach(suit => {
-      let asdf = [];
       RANKS.forEach(rank => {
-        asdf.push(new Card(suit, rank));
+        this.cards.push(new Card(suit, rank));
       });
-      this.cards.push(asdf);
     });
   }
 
+  /**
+   * @description Function that turns the deck cards to a human readable string
+   *
+   * @returns {string} Returns a string with all the cards of the deck
+   * @memberof Deck
+   */
   toString() {
     let deckString = '';
-    this.cards.forEach(suit => {
-      suit.forEach(card => {
-        deckString += card.toString();
-        deckString += '\n'
-      });
+    this.cards.forEach(card => {
+      deckString += card.toString();
+      deckString += '\n'
     });
     return deckString;
   }
