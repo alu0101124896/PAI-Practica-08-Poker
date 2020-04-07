@@ -63,9 +63,11 @@ describe('Deck Class', () => {
       expect(myDeck.cards.length).to.be.equal(53);
     });
 
-    it('Shuffle', () => {
+    it('Shuffle cards', () => {
+      const myDeck2 = new DeckTest();
+      expect(myDeck.cards).to.be.deep.equal(myDeck2.cards);
       myDeck.shuffle();
-      expect(myDeck.cards.length).to.be.equal(52);
+      expect(myDeck.cards).to.not.be.deep.equal(myDeck2.cards);
     });
   });
 });

@@ -72,6 +72,20 @@ class Deck {
   addCard(newCard) {
     this.cards.push(newCard);
   }
+
+  /**
+   * @description Function that shuffles de deck of cards
+   *
+   * @memberof Deck
+   */
+  shuffle() {
+    for (let firstIterator = this.cards.length - 1; firstIterator > 0; firstIterator--) {
+      let secondIterator = Math.floor(Math.random() * (firstIterator + 1));
+        let tempCard = this.cards[firstIterator];
+        this.cards[firstIterator] = this.cards[secondIterator];
+        this.cards[secondIterator] = tempCard;
+    }
+  }
 }
 
 export const DeckTest = Deck;
