@@ -12,8 +12,8 @@
 import { Card_ as _Card, CardTest } from '../src/card.js';
 const Card = _Card;
 
-const SUITS = ['S','H', 'D', 'C'];
-const RANKS = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2'];
+const SUITS = ['C', 'D', 'H', 'S'];
+const RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
 /**
  * @description Class representing a deck of cards
@@ -30,9 +30,11 @@ class Deck {
   constructor() {
     this.cards = [];
     SUITS.forEach(suit => {
+      let asdf = [];
       RANKS.forEach(rank => {
-        this.cards.push(new Card(suit, rank));
+        asdf.push(new Card(suit, rank));
       });
+      this.cards.push(asdf);
     });
   }
 }
