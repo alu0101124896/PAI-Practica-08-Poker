@@ -24,11 +24,13 @@ describe('Card Class', () => {
     });
 
     it('Card has a suit', () => {
-      expect(myCard).have.property('suit').that.is.a('string');
+      expect(myCard).to.have.property('suit');
+      expect(myCard.suit).to.be.a('string');
     });
 
     it('Card has a rank', () => {
-      expect(myCard).have.property('rank').that.is.a('string');
+      expect(myCard).to.have.property('rank');
+      expect(myCard.rank).to.be.a('string');
     });
 
     it('Default suit is Clubs', () => {

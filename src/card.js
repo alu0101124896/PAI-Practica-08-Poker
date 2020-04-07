@@ -15,9 +15,18 @@ const DIAMONDS = 'D';
 const CLUBS = 'C';
 
 const ACE = 'A';
-const JACK = 'J';
-const QUEEN = 'Q';
 const KING = 'K';
+const QUEEN = 'Q';
+const JACK = 'J';
+const TEN = '10';
+const NINE = '9';
+const EIGHT = '8';
+const SEVEN = '7';
+const SIX = '6';
+const FIVE = '5';
+const FOUR = '4';
+const THREE = '3';
+const TWO = '2';
 
 /**
  * @description Class representing a complex number
@@ -46,44 +55,44 @@ class Card {
     let rankString = '';
     let suitString = '';
     switch (this.rank) {
-      case 'A':
+      case ACE:
         rankString = 'Ace';
         break;
-      case '2':
-        rankString = 'Two';
+      case KING:
+        rankString = 'King';
         break;
-      case '3':
-        rankString = 'Three';
-        break;
-      case '4':
-        rankString = 'Four';
-        break;
-      case '5':
-        rankString = 'Five';
-        break;
-      case '6':
-        rankString = 'Six';
-        break;
-      case '7':
-        rankString = 'Seven';
-        break;
-      case '8':
-        rankString = 'Eight';
-        break;
-      case '9':
-        rankString = 'Nine';
-        break;
-      case '10':
-        rankString = 'Ten';
-        break;
-      case 'J':
-        rankString = 'Jack';
-        break;
-      case 'Q':
+      case QUEEN:
         rankString = 'Queen';
         break;
-      case 'K':
-        rankString = 'King';
+      case JACK:
+        rankString = 'Jack';
+        break;
+      case TEN:
+        rankString = 'Ten';
+        break;
+      case NINE:
+        rankString = 'Nine';
+        break;
+      case EIGHT:
+        rankString = 'Eight';
+        break;
+      case SEVEN:
+        rankString = 'Seven';
+        break;
+      case SIX:
+        rankString = 'Six';
+        break;
+      case FIVE:
+        rankString = 'Five';
+        break;
+      case FOUR:
+        rankString = 'Four';
+        break;
+      case THREE:
+        rankString = 'Three';
+        break;
+      case TWO:
+        rankString = 'Two';
         break;
 
       default:
@@ -114,7 +123,7 @@ class Card {
   static compare(cardOne, cardTwo) {
     if (cardOne.suit === SPADES) {
       if (cardTwo.suit === SPADES) {
-        return 0;
+        return Card.rankComparator(cardOne, cardTwo);
       } else {
         return 1;
       }
@@ -122,7 +131,7 @@ class Card {
       if (cardTwo.suit === SPADES) {
         return -1;
       } else if (cardTwo.suit === HEARTS) {
-        return 0;
+        return Card.rankComparator(cardOne, cardTwo);
       } else {
         return 1;
       }
@@ -130,12 +139,116 @@ class Card {
       if ((cardTwo.suit === SPADES) || (cardTwo.suit === HEARTS)) {
         return -1;
       } else if (cardTwo.suit === DIAMONDS) {
-        return 0;
+        return Card.rankComparator(cardOne, cardTwo);
       } else {
         return 1;
       }
     } else {
       if ((cardTwo.suit === SPADES) || (cardTwo.suit === HEARTS) || (cardTwo.suit === DIAMONDS)) {
+        return -1;
+      } else {
+        return Card.rankComparator(cardOne, cardTwo);
+      }
+    }
+  }
+
+  static rankComparator(cardOne, cardTwo) {
+    if (cardOne.rank === ACE) {
+      if (cardTwo.rank === ACE) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === KING) {
+      if (cardTwo.rank === ACE) {
+        return -1;
+      } else if (cardTwo.rank === KING) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === QUEEN) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING)) {
+        return -1;
+      } else if (cardTwo.rank === QUEEN) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === JACK) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN)) {
+        return -1;
+      } else if (cardTwo.rank === JACK) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === TEN) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK)) {
+        return -1;
+      } else if (cardTwo.rank === TEN) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === NINE) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN)) {
+        return -1;
+      } else if (cardTwo.rank === NINE) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === EIGHT) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE)) {
+        return -1;
+      } else if (cardTwo.rank === EIGHT) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === SEVEN) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT)) {
+        return -1;
+      } else if (cardTwo.rank === SEVEN) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === SIX) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN)) {
+        return -1;
+      } else if (cardTwo.rank === SIX) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === FIVE) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX)) {
+        return -1;
+      } else if (cardTwo.rank === FIVE) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === FOUR) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX) || (cardTwo.rank === FIVE)) {
+        return -1;
+      } else if (cardTwo.rank === FOUR) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === THREE) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX) || (cardTwo.rank === FIVE) || (cardTwo.rank === FOUR)) {
+        return -1;
+      } else if (cardTwo.rank === THREE) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else if (cardOne.rank === TWO) {
+      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX) || (cardTwo.rank === FIVE) || (cardTwo.rank === FOUR)) {
         return -1;
       } else {
         return 0;
