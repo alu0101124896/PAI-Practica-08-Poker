@@ -63,6 +63,12 @@ class Deck {
     return firstCard;
   }
 
+  /**
+   * @description Function that adds a given card at the end of the deck
+   *
+   * @param {Card} newCard - Card to be added to the end of the deck
+   * @memberof Deck
+   */
   addCard(newCard) {
     this.cards.push(newCard);
   }

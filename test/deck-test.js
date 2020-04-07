@@ -54,11 +54,18 @@ describe('Deck Class', () => {
 
     it('Pop first card', () => {
       expect(myDeck.popCard()).to.be.deep.equal(aceOfClubs);
+      expect(myDeck.cards.length).to.be.equal(51);
     });
 
     it('Add a card', () => {
       myDeck.addCard(aceOfClubs);
       expect(myDeck.cards[myDeck.cards.length - 1]).to.be.deep.equal(aceOfClubs);
+      expect(myDeck.cards.length).to.be.equal(53);
+    });
+
+    it('Shuffle', () => {
+      myDeck.shuffle();
+      expect(myDeck.cards.length).to.be.equal(52);
     });
   });
 });
