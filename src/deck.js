@@ -37,6 +37,17 @@ class Deck {
       this.cards.push(asdf);
     });
   }
+
+  toString() {
+    let deckString = '';
+    this.cards.forEach(suit => {
+      suit.forEach(card => {
+        deckString += card.toString();
+        deckString += '\n'
+      });
+    });
+    return deckString;
+  }
 }
 
 export const DeckTest = Deck;
