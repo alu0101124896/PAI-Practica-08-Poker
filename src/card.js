@@ -29,7 +29,7 @@ const THREE = '3';
 const TWO = '2';
 
 /**
- * @description Class representing a complex number
+ * @description Class representing a card
  *
  * @class Card
  */
@@ -40,7 +40,7 @@ class Card {
    *
    * @memberof Card
    */
-  constructor(suit = CLUBS, rank = '2') {
+  constructor(suit = CLUBS, rank = TWO) {
     this.suit = suit;
     this.rank = rank;
   }
@@ -258,3 +258,4 @@ class Card {
 }
 
 export const CardTest = Card;
+export const Card_ = Card;
