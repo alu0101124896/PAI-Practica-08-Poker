@@ -17,84 +17,77 @@ const Card = _Card;
 
 describe('Card Class', () => {
   describe('Default properties', () => {
-    let myCard;
-
-    beforeEach(() => {
-      myCard = new Card();
-    });
+    const MY_CARD = new Card();
 
     it('Card has a suit', () => {
-      expect(myCard).to.have.property('suit');
-      expect(myCard.suit).to.be.a('string');
+      expect(MY_CARD).to.have.property('suit');
+      expect(MY_CARD.suit).to.be.a('string');
     });
 
     it('Card has a rank', () => {
-      expect(myCard).to.have.property('rank');
-      expect(myCard.rank).to.be.a('string');
+      expect(MY_CARD).to.have.property('rank');
+      expect(MY_CARD.rank).to.be.a('string');
     });
 
     it('Default suit is Clubs', () => {
-      expect(myCard.suit).to.be.equal('C');
+      expect(MY_CARD.suit).to.be.equal('C');
     });
 
     it('Default rank is Two', () => {
-      expect(myCard.rank).to.be.equal('2');
+      expect(MY_CARD.rank).to.be.equal('2');
     });
   });
 
   describe('Non default property values', () => {
-    let myCard, suit, rank;
-
-    beforeEach(() => {
-      suit = 'D';
-      rank = 'A';
-      myCard = new Card(suit, rank)
-    });
+    const DIAMONDS = 'D';
+    const ACE = 'A';
+    const MY_CARD = new Card(DIAMONDS, ACE)
 
     it('Modifies default suit correctly', () => {
-      expect(myCard.suit).to.be.equal(suit);
+      expect(MY_CARD.suit).to.be.equal(DIAMONDS);
     });
 
     it('Modifies default rank correctly', () => {
-      expect(myCard.rank).to.be.equal(rank);
+      expect(MY_CARD.rank).to.be.equal(ACE);
     });
   });
 
   describe('Card to string', () => {
-    const myCard = new Card();
+    const MY_CARD = new Card();
 
     it('Default values', () => {
-      expect(myCard.toString()).to.be.equal('Two of Clubs');
+      expect(MY_CARD.toString()).to.be.equal('Two of Clubs');
     });
 
-    const suit = 'D';
-    const rank = 'A';
-    const myModifiedCard = new Card(suit, rank);
+    const DIAMONDS = 'D';
+    const ACE = 'A';
+    const MY_CARD_2 = new Card(DIAMONDS, ACE)
 
     it('Modified values', () => {
-      expect(myModifiedCard.toString()).to.be.equal('Ace of Diamonds');
+      expect(MY_CARD_2.toString()).to.be.equal('Ace of Diamonds');
     });
   });
 
   describe('Compare', () => {
-    const spades = 'S';
-    const three = '3';
-    const threeOfSpades = new Card(spades, three);
+    const SPADES = 'S';
+    const THREE = '3';
+    const THREE_OF_SPADES = new Card(SPADES, THREE);
 
-    const diamonds = 'D';
-    const eight = '8';
-    const eightOfDiamonds = new Card(diamonds, eight);
+    const DIAMONDS = 'D';
+    const EIGHT = '8';
+    const EIGHT_OF_DIAMONDS = new Card(DIAMONDS, EIGHT);
+
+    const EIGHT_OF_SPADES = new Card(SPADES, EIGHT);
 
     it('Tree of Spades > Eight of Diamonds', () => {
-      expect(Card.compare(threeOfSpades, eightOfDiamonds)).to.be.deep.equal(threeOfSpades);
-      expect(Card.compare(eightOfDiamonds, threeOfSpades)).to.be.deep.equal(threeOfSpades);
+      expect(Card.compare(THREE_OF_SPADES, EIGHT_OF_DIAMONDS)).to.be.deep.equal(THREE_OF_SPADES);
+      expect(Card.compare(EIGHT_OF_DIAMONDS, THREE_OF_SPADES)).to.be.deep.equal(THREE_OF_SPADES);
     });
 
-    const eightOfSpades = new Card(spades, eight);
 
     it('Eight of Spades > Three of Spades', () => {
-      expect(Card.compare(eightOfSpades, threeOfSpades)).to.be.deep.equal(eightOfSpades);
-      expect(Card.compare(threeOfSpades, eightOfSpades)).to.be.deep.equal(eightOfSpades);
+      expect(Card.compare(EIGHT_OF_SPADES, THREE_OF_SPADES)).to.be.deep.equal(EIGHT_OF_SPADES);
+      expect(Card.compare(THREE_OF_SPADES, EIGHT_OF_SPADES)).to.be.deep.equal(EIGHT_OF_SPADES);
     });
   });
 });

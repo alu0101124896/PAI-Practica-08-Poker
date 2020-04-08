@@ -58,9 +58,11 @@ class Deck {
    * @memberof Deck
    */
   popCard() {
-    let firstCard = this.cards[0];
-    this.cards.splice(0, 1);
-    return firstCard;
+    if (this.cards.length > 0) {
+      const FIRST_CARD = this.cards[0];
+      this.cards.splice(0, 1);
+      return FIRST_CARD;
+    }
   }
 
   /**
@@ -80,8 +82,8 @@ class Deck {
    */
   shuffle() {
     for (let firstIterator = this.cards.length - 1; firstIterator > 0; firstIterator--) {
-      let secondIterator = Math.floor(Math.random() * (firstIterator + 1));
-      this.swap(firstIterator, secondIterator);
+      const SECOND_ITERATOR = Math.floor(Math.random() * (firstIterator + 1));
+      this.swap(firstIterator, SECOND_ITERATOR);
     }
   }
 
@@ -93,9 +95,9 @@ class Deck {
    * @memberof Deck
    */
   swap(firstIndex, secondIndex) {
-    let tempCard = this.cards[firstIndex];
+    const TEMP_CARD = this.cards[firstIndex];
     this.cards[firstIndex] = this.cards[secondIndex];
-    this.cards[secondIndex] = tempCard;
+    this.cards[secondIndex] = TEMP_CARD;
   }
 
   /**
@@ -104,9 +106,9 @@ class Deck {
    * @memberof Deck
    */
   sort() {
-    let lowIndex = 0;
-    let highIndex = this.cards.length - 1;
-    this.quicksort(lowIndex, highIndex);
+    const LOW_INDEX = 0;
+    const HIGH_INDEX = this.cards.length - 1;
+    this.quicksort(LOW_INDEX, HIGH_INDEX);
   }
 
   /**
@@ -118,9 +120,9 @@ class Deck {
    */
   quicksort(lowIndex, highIndex) {
     if (lowIndex < highIndex) {
-      let middleIndex = this.split(lowIndex, highIndex);
-      this.quicksort(lowIndex, middleIndex - 1);
-      this.quicksort(middleIndex + 1, highIndex);
+      const MIDDLE_INDEX = this.split(lowIndex, highIndex);
+      this.quicksort(lowIndex, MIDDLE_INDEX - 1);
+      this.quicksort(MIDDLE_INDEX + 1, highIndex);
     }
   }
 
@@ -133,11 +135,11 @@ class Deck {
    * @memberof Deck
    */
   split(lowIndex, highIndex) {
-    let pivotCard = this.cards[highIndex];
+    const PIVOT_CARD = this.cards[highIndex];
     let firstIterator = lowIndex;
     for (let secondIterator = lowIndex; secondIterator < highIndex; secondIterator++) {
-      let highestCard = Card.compare(pivotCard, this.cards[secondIterator]);
-      if (highestCard === pivotCard) {
+      const HIGHEST_CARD = Card.compare(PIVOT_CARD, this.cards[secondIterator]);
+      if (HIGHEST_CARD === PIVOT_CARD) {
         this.swap(firstIterator, secondIterator);
         firstIterator++;
       }

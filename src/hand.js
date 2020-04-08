@@ -59,6 +59,22 @@ class Hand {
   addCard(newCard) {
     this.cards.push(newCard);
   }
+
+  /**
+   * @description Function that removes a given card from the hand and returns it
+   *
+   * @param {Card} cardToPop - Card to be removed from the hand
+   * @returns {Card} Returns the first card of the deck
+   * @memberof Deck
+   */
+  popCard(cardToPop) {
+    const INDEX_OF_CARD = this.cards.indexOf(cardToPop)
+    if(INDEX_OF_CARD !== -1) {
+      const POPPED_CARD = this.cards[INDEX_OF_CARD];
+      this.cards.splice(INDEX_OF_CARD, 1);
+      return POPPED_CARD;
+    }
+  }
 }
 
 export const Hand_ = Hand;

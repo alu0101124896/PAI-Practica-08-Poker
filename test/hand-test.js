@@ -42,17 +42,17 @@ describe('Hand Class', () => {
   });
 
   describe('Hand to string', () => {
-    const myHand = new Hand('new hand');
+    const MY_HAND = new Hand('new hand');
 
     it('Default value', () => {
-      expect(myHand.toString()).to.be.equal('');
+      expect(MY_HAND.toString()).to.be.equal('');
     });
   });
 
   describe('Hand methods', () => {
-    const clubs = 'C';
-    const two = '2';
-    const twoOfClubs = new Card(clubs, two);
+    const CLUBS = 'C';
+    const TWO = '2';
+    const TWO_OF_CLUBS = new Card(CLUBS, TWO);
 
     let myHand;
 
@@ -61,15 +61,15 @@ describe('Hand Class', () => {
     });
 
     it('Add a card', () => {
-      myHand.addCard(twoOfClubs);
-      expect(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(twoOfClubs);
+      myHand.addCard(TWO_OF_CLUBS);
+      expect(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(TWO_OF_CLUBS);
       expect(myHand.cards.length).to.be.equal(1);
     });
 
     it('Pop a specific card', () => {
-      myHand.addCard(twoOfClubs);
-      expect(myHand.popCard(twoOfClubs)).to.be.deep.equal(twoOfClubs);
-      expect(myHand.cards.length).to.be.equal(51);
+      myHand.addCard(TWO_OF_CLUBS);
+      expect(myHand.popCard(TWO_OF_CLUBS)).to.be.deep.equal(TWO_OF_CLUBS);
+      expect(myHand.cards.length).to.be.equal(0);
     });
   });
 });
