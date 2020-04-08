@@ -49,6 +49,16 @@ class Hand {
     });
     return handString;
   }
+
+  /**
+   * @description Function that adds a given card at the end of the hand
+   *
+   * @param {Card} newCard - Card to be added to the end of the hand
+   * @memberof Hand
+   */
+  addCard(newCard) {
+    this.cards.push(newCard);
+  }
 }
 
 export const Hand_ = Hand;
