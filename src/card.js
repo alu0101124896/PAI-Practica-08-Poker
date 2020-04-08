@@ -126,7 +126,7 @@ class Card {
    * @static
    * @param {Card} cardOne - First card to compare
    * @param {Card} cardTwo - Second card to compare
-   * @returns {Card} Returns the card with the higest value
+   * @returns {Card} Returns the card with the highest value
    * @memberof Card
    */
   static compare(cardOne, cardTwo) {
@@ -167,7 +167,7 @@ class Card {
    * @static
    * @param {Card} cardOne - First card to compare
    * @param {Card} cardTwo - Second card to compare
-   * @returns {Card} Returns the card with the higest rank
+   * @returns {Card} Returns the card with the highest rank
    * @memberof Card
    */
   static rankComparator(cardOne, cardTwo) {

@@ -52,13 +52,12 @@ describe('Hand Class', () => {
   describe('Hand methods', () => {
     const CLUBS = 'C';
     const TWO = '2';
+    const THREE = '3';
     const TWO_OF_CLUBS = new Card(CLUBS, TWO);
+    const THREE_OF_CLUBS = new Card(CLUBS, THREE);
 
-    let myHand;
-
-    beforeEach(() => {
-      myHand = new Hand('new hand');
-    });
+    let myDeck = new Deck();
+    let myHand = new Hand('new hand');
 
     it('Add a card', () => {
       myHand.addCard(TWO_OF_CLUBS);
@@ -67,9 +66,15 @@ describe('Hand Class', () => {
     });
 
     it('Pop a specific card', () => {
-      myHand.addCard(TWO_OF_CLUBS);
       expect(myHand.popCard(TWO_OF_CLUBS)).to.be.deep.equal(TWO_OF_CLUBS);
       expect(myHand.cards.length).to.be.equal(0);
+    });
+
+    it('Move cards', () => {
+      Hand.moveCards(myDeck, 2, myHand);
+      expect(myHand.cards[0]).to.be.deep.equal(TWO_OF_CLUBS);
+      expect(myHand.cards[1]).to.be.deep.equal(THREE_OF_CLUBS);
+      expect(myHand.cards.length).to.be.equal(2);
     });
   });
 });
