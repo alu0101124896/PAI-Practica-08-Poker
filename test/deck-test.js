@@ -78,5 +78,13 @@ describe('Deck Class', () => {
       myDeck.sort();
       expect(myDeck.cards).to.be.deep.equal(myDeck2.cards);
     });
+
+    it('Deal hands', () => {
+      const NUM_OF_HANDS = 4;
+      const NUM_OF_CARDS_BY_HAND = 5;
+      const HANDS = myDeck.dealHands(NUM_OF_HANDS, NUM_OF_CARDS_BY_HAND);
+      expect(HANDS.length).to.be.equal(NUM_OF_HANDS);
+      expect(HANDS[0].cards.length).to.be.equal(NUM_OF_CARDS_BY_HAND);
+    });
   });
 });

@@ -12,12 +12,6 @@
 import { Card_ as _Card } from './card.js';
 const Card = _Card;
 
-import { Deck_ as _Deck } from './deck.js';
-const Deck = _Deck;
-
-// const SUITS = ['C', 'D', 'H', 'S'];
-// const RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-
 /**
  * @description Class representing a Hand of cards
  *
@@ -64,8 +58,8 @@ class Hand {
    * @description Function that removes a given card from the hand and returns it
    *
    * @param {Card} cardToPop - Card to be removed from the hand
-   * @returns {Card} Returns the first card of the deck
-   * @memberof Deck
+   * @returns {Card} Returns the removed card from the hand
+   * @memberof Hand
    */
   popCard(cardToPop) {
     const INDEX_OF_CARD = this.cards.indexOf(cardToPop)
