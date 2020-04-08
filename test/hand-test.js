@@ -40,4 +40,12 @@ describe('Hand Class', () => {
       expect(myHand.cards.length).to.be.equal(0);
     });
   });
+
+  describe('Hand to string', () => {
+    const myHand = new Hand('new hand');
+
+    it('Default value', () => {
+      expect(myHand.toString()).to.be.equal('');
+    });
+  });
 });
