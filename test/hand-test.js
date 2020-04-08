@@ -65,5 +65,11 @@ describe('Hand Class', () => {
       expect(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(twoOfClubs);
       expect(myHand.cards.length).to.be.equal(1);
     });
+
+    it('Pop a specific card', () => {
+      myHand.addCard(twoOfClubs);
+      expect(myHand.popCard(twoOfClubs)).to.be.deep.equal(twoOfClubs);
+      expect(myHand.cards.length).to.be.equal(51);
+    });
   });
 });

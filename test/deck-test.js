@@ -52,15 +52,15 @@ describe('Deck Class', () => {
       myDeck = new Deck();
     });
 
-    it('Pop first card', () => {
-      expect(myDeck.popCard()).to.be.deep.equal(twoOfClubs);
-      expect(myDeck.cards.length).to.be.equal(51);
-    });
-
     it('Add a card', () => {
       myDeck.addCard(twoOfClubs);
       expect(myDeck.cards[myDeck.cards.length - 1]).to.be.deep.equal(twoOfClubs);
       expect(myDeck.cards.length).to.be.equal(53);
+    });
+
+    it('Pop first card', () => {
+      expect(myDeck.popCard()).to.be.deep.equal(twoOfClubs);
+      expect(myDeck.cards.length).to.be.equal(51);
     });
 
     it('Shuffle cards', () => {
