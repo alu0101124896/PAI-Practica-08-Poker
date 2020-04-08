@@ -46,10 +46,11 @@ describe('Deck Class', () => {
     const TWO = '2';
     const TWO_OF_CLUBS = new Card(CLUBS, TWO);
 
-    let myDeck;
+    let myDeck, myDeck2;
 
     beforeEach(() => {
       myDeck = new Deck();
+      myDeck2 = new Deck();
     });
 
     it('Add a card', () => {
@@ -64,14 +65,12 @@ describe('Deck Class', () => {
     });
 
     it('Shuffle cards', () => {
-      const myDeck2 = new Deck();
       expect(myDeck.cards).to.be.deep.equal(myDeck2.cards);
       myDeck.shuffle();
       expect(myDeck.cards).to.not.be.deep.equal(myDeck2.cards);
     });
 
     it('Sort cards', () => {
-      const myDeck2 = new Deck();
       expect(myDeck.cards).to.be.deep.equal(myDeck2.cards);
       myDeck.shuffle();
       expect(myDeck.cards).to.not.be.deep.equal(myDeck2.cards);
@@ -84,7 +83,12 @@ describe('Deck Class', () => {
       const NUM_OF_CARDS_BY_HAND = 5;
       const HANDS = myDeck.dealHands(NUM_OF_HANDS, NUM_OF_CARDS_BY_HAND);
       expect(HANDS.length).to.be.equal(NUM_OF_HANDS);
-      expect(HANDS[0].cards.length).to.be.equal(NUM_OF_CARDS_BY_HAND);
+      for (let cardsIterator = 0; cardsIterator < NUM_OF_CARDS_BY_HAND; cardsIterator++) {
+        for (let handsIterator = 0; handsIterator < NUM_OF_HANDS; handsIterator++) {
+          expect(HANDS[handsIterator].cards.length).to.be.equal(NUM_OF_CARDS_BY_HAND);
+          expect(HANDS[handsIterator].cards[cardsIterator]).to.be.deep.equal(myDeck2.popCard());
+        }
+      }
     });
   });
 });

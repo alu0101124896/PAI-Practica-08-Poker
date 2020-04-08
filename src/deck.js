@@ -12,6 +12,9 @@
 import { Card_ as _Card } from './card.js';
 const Card = _Card;
 
+import { Hand_ as _Hand } from '../src/hand.js';
+const Hand = _Hand;
+
 const SUITS = ['C', 'D', 'H', 'S'];
 const RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
@@ -146,6 +149,27 @@ class Deck {
     }
     this.swap(firstIterator, highIndex);
     return firstIterator;
+  }
+
+  /**
+   * @description Function that generates a given number of hands with a given number of cards each one
+   *
+   * @param {number} numOfHands - Number of hands to generate
+   * @param {number} numOfCardsByHand Number of cards to add to each hand
+   * @returns {array} Returns an array with the generated hands
+   * @memberof Deck
+   */
+  dealHands(numOfHands, numOfCardsByHand) {
+    let hands = [];
+    for (let handsIterator = 0; handsIterator < numOfHands; handsIterator++) {
+      hands.push(new Hand('Hand ' + (handsIterator + 1)));
+    }
+    for (let cardsIterator = 0; cardsIterator < numOfCardsByHand; cardsIterator++) {
+      for (let handsIterator = 0; handsIterator < numOfHands; handsIterator++) {
+        hands[handsIterator].addCard(this.popCard());
+      }
+    }
+    return hands;
   }
 }
 
