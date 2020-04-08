@@ -97,6 +97,54 @@ class Deck {
     this.cards[firstIndex] = this.cards[secondIndex];
     this.cards[secondIndex] = tempCard;
   }
+
+  /**
+   * @description Function that calls the quicksort function with the first and last indexes of the deck
+   *
+   * @memberof Deck
+   */
+  sort() {
+    let lowIndex = 0;
+    let highIndex = this.cards.length - 1;
+    this.quicksort(lowIndex, highIndex);
+  }
+
+  /**
+   * @description Recursive function that sorts the deck following the quicksort algoritm
+   *
+   * @param {number} lowIndex - Index of the lowest card
+   * @param {number} highIndex - Index of the highest card
+   * @memberof Deck
+   */
+  quicksort(lowIndex, highIndex) {
+    if (lowIndex < highIndex) {
+      let middleIndex = this.split(lowIndex, highIndex);
+      this.quicksort(lowIndex, middleIndex - 1);
+      this.quicksort(middleIndex + 1, highIndex);
+    }
+  }
+
+  /**
+   * @description Function that splits the deck in two parts
+   *
+   * @param {number} lowIndex - Index of the lowest card
+   * @param {number} highIndex - Index of the highest card
+   * @returns {number} Returns the index of the pivot card
+   * @memberof Deck
+   */
+  split(lowIndex, highIndex) {
+    let pivotCard = this.cards[highIndex];
+    let firstIterator = lowIndex;
+    for (let secondIterator = lowIndex; secondIterator < highIndex; secondIterator++) {
+      let highestCard = Card.compare(pivotCard, this.cards[secondIterator]);
+      if (highestCard === pivotCard) {
+        this.swap(firstIterator, secondIterator);
+        firstIterator++;
+      }
+    }
+    this.swap(firstIterator, highIndex);
+    return firstIterator;
+  }
 }
 
 export const Deck_ = Deck;
