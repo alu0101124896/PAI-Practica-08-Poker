@@ -9,7 +9,7 @@
 
 "use strict";
 
-import { Card_ as _Card } from '../src/card.js';
+import { Card_ as _Card } from './card.js';
 const Card = _Card;
 
 const SUITS = ['C', 'D', 'H', 'S'];
