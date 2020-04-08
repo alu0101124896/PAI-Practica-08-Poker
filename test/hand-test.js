@@ -37,6 +37,7 @@ describe('Hand Class', () => {
     it('Hand has an array of cards', () => {
       expect(myHand).to.have.property('cards');
       expect(myHand.cards).to.be.an('array');
+      expect(myHand.cards.length).to.be.equal(0);
     });
   });
 });
