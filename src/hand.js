@@ -39,15 +39,15 @@ class Hand {
    * @description Function that turns the hand cards to a human readable string
    *
    * @returns {string} Returns a string with all the cards of the hand
-   * @memberof Deck
+   * @memberof Hand
    */
   toString() {
-    let deckString = '';
+    let handString = '';
     this.cards.forEach(card => {
-      deckString += card.toString();
-      deckString += '\n'
+      handString += card.toString();
+      handString += '\n'
     });
-    return deckString;
+    return handString;
   }
 }
 

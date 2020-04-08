@@ -48,4 +48,22 @@ describe('Hand Class', () => {
       expect(myHand.toString()).to.be.equal('');
     });
   });
+
+  describe('Hand methods', () => {
+    const clubs = 'C';
+    const two = '2';
+    const twoOfClubs = new Card(clubs, two);
+
+    let myHand;
+
+    beforeEach(() => {
+      myHand = new Hand('new hand');
+    });
+
+    it('Add a card', () => {
+      myHand.addCard(twoOfClubs);
+      expect(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(twoOfClubs);
+      expect(myHand.cards.length).to.be.equal(1);
+    });
+  });
 });
