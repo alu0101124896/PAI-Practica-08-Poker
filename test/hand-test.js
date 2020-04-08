@@ -22,4 +22,16 @@ import { Hand_ as _Hand } from '../src/hand.js';
 const Hand = _Hand;
 
 describe('Hand Class', () => {
+  describe('Default properties', () => {
+    let myHand;
+
+    beforeEach(() => {
+      myHand = new Hand('new hand');
+    });
+
+    it('Deck has a label', () => {
+      expect(myHand).to.have.property('label');
+      expect(myHand.cards).to.be.a('string');
+    });
+  });
 });
