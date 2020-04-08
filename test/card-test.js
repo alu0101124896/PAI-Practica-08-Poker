@@ -12,15 +12,15 @@
 import { expect as _expect } from 'chai';
 const expect = _expect;
 
-import { CardTest as _CardTest } from '../src/card.js';
-const CardTest = _CardTest;
+import { Card_ as _Card } from '../src/card.js';
+const Card = _Card;
 
 describe('Card Class', () => {
   describe('Default properties', () => {
     let myCard;
 
     beforeEach(() => {
-      myCard = new CardTest();
+      myCard = new Card();
     });
 
     it('Card has a suit', () => {
@@ -48,7 +48,7 @@ describe('Card Class', () => {
     beforeEach(() => {
       suit = 'D';
       rank = 'A';
-      myCard = new CardTest(suit, rank)
+      myCard = new Card(suit, rank)
     });
 
     it('Modifies default suit correctly', () => {
@@ -61,7 +61,7 @@ describe('Card Class', () => {
   });
 
   describe('Card to string', () => {
-    const myCard = new CardTest();
+    const myCard = new Card();
 
     it('Default values', () => {
       expect(myCard.toString()).to.be.equal('Two of Clubs');
@@ -69,7 +69,7 @@ describe('Card Class', () => {
 
     const suit = 'D';
     const rank = 'A';
-    const myModifiedCard = new CardTest(suit, rank);
+    const myModifiedCard = new Card(suit, rank);
 
     it('Modified values', () => {
       expect(myModifiedCard.toString()).to.be.equal('Ace of Diamonds');
@@ -79,22 +79,22 @@ describe('Card Class', () => {
   describe('Compare', () => {
     const spades = 'S';
     const three = '3';
-    const threeOfSpades = new CardTest(spades, three);
+    const threeOfSpades = new Card(spades, three);
 
     const diamonds = 'D';
     const eight = '8';
-    const eightOfDiamonds = new CardTest(diamonds, eight);
+    const eightOfDiamonds = new Card(diamonds, eight);
 
     it('Tree of Spades > Eight of Diamonds', () => {
-      expect(CardTest.compare(threeOfSpades, eightOfDiamonds)).to.be.deep.equal(threeOfSpades);
-      expect(CardTest.compare(eightOfDiamonds, threeOfSpades)).to.be.deep.equal(threeOfSpades);
+      expect(Card.compare(threeOfSpades, eightOfDiamonds)).to.be.deep.equal(threeOfSpades);
+      expect(Card.compare(eightOfDiamonds, threeOfSpades)).to.be.deep.equal(threeOfSpades);
     });
 
-    const eightOfSpades = new CardTest(spades, eight);
+    const eightOfSpades = new Card(spades, eight);
 
     it('Eight of Spades > Three of Spades', () => {
-      expect(CardTest.compare(eightOfSpades, threeOfSpades)).to.be.deep.equal(eightOfSpades);
-      expect(CardTest.compare(threeOfSpades, eightOfSpades)).to.be.deep.equal(eightOfSpades);
+      expect(Card.compare(eightOfSpades, threeOfSpades)).to.be.deep.equal(eightOfSpades);
+      expect(Card.compare(threeOfSpades, eightOfSpades)).to.be.deep.equal(eightOfSpades);
     });
   });
 });

@@ -9,11 +9,11 @@
 
 "use strict";
 
-import { Card_ as _Card, CardTest } from '../src/card.js';
+import { Card_ as _Card } from '../src/card.js';
 const Card = _Card;
 
 const SUITS = ['C', 'D', 'H', 'S'];
-const RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+const RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
 /**
  * @description Class representing a deck of cards
@@ -81,11 +81,22 @@ class Deck {
   shuffle() {
     for (let firstIterator = this.cards.length - 1; firstIterator > 0; firstIterator--) {
       let secondIterator = Math.floor(Math.random() * (firstIterator + 1));
-        let tempCard = this.cards[firstIterator];
-        this.cards[firstIterator] = this.cards[secondIterator];
-        this.cards[secondIterator] = tempCard;
+      this.swap(firstIterator, secondIterator);
     }
+  }
+
+  /**
+   * @description Function that swaps two cards of the deck
+   *
+   * @param {number} firstIndex - Index of the first card
+   * @param {number} secondIndex - Index of the second card
+   * @memberof Deck
+   */
+  swap(firstIndex, secondIndex) {
+    let tempCard = this.cards[firstIndex];
+    this.cards[firstIndex] = this.cards[secondIndex];
+    this.cards[secondIndex] = tempCard;
   }
 }
 
-export const DeckTest = Deck;
+export const Deck_ = Deck;

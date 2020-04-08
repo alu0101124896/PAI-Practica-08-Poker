@@ -245,5 +245,4 @@ class Card {
   }
 }
 
-export const CardTest = Card;
 export const Card_ = Card;
