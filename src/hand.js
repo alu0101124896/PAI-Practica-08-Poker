@@ -75,6 +75,21 @@ class Hand {
       return POPPED_CARD;
     }
   }
+
+  /**
+   * @description Function that moves the given number of cards from the given source set to the given destiny set
+   *
+   * @static
+   * @param {*} sourceSet - Source deck/hand of cards
+   * @param {number} numOfCards - Number of cards to be moved
+   * @param {*} destinySet - Destiny deck/hand of cards
+   * @memberof Hand
+   */
+  static moveCards (sourceSet, numOfCards, destinySet) {
+    for (let cardsIterator = 0; cardsIterator < numOfCards; cardsIterator++) {
+      destinySet.addCard(sourceSet.popCard());
+    }
+  }
 }
 
 export const Hand_ = Hand;
