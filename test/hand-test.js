@@ -29,9 +29,14 @@ describe('Hand Class', () => {
       myHand = new Hand('new hand');
     });
 
-    it('Deck has a label', () => {
+    it('Hand has a label', () => {
       expect(myHand).to.have.property('label');
       expect(myHand.label).to.be.a('string');
+    });
+
+    it('Hand has an array of cards', () => {
+      expect(myHand).to.have.property('cards');
+      expect(myHand.cards).to.be.an('array');
     });
   });
 });
