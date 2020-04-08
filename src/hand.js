@@ -30,7 +30,8 @@ class Hand {
    *
    * @memberof Hand
    */
-  constructor() {
+  constructor(label = '') {
+    this.label = label;
   }
 }
 

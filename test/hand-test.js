@@ -31,7 +31,7 @@ describe('Hand Class', () => {
 
     it('Deck has a label', () => {
       expect(myHand).to.have.property('label');
-      expect(myHand.cards).to.be.a('string');
+      expect(myHand.label).to.be.a('string');
     });
   });
 });
