@@ -144,7 +144,7 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.hasStraight()).to.be.equal(true);
     });
 
-    it('Has a strange straight', () => {
+    it('Has a special case of a straight', () => {
       myPokerHand.addCard(new Card(HEARTS, FOUR));
       myPokerHand.addCard(new Card(HEARTS, TWO));
       myPokerHand.addCard(new Card(HEARTS, FIVE));

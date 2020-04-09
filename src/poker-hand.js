@@ -17,6 +17,9 @@ const Card = _Card;
 import { Hand_ as _Hand } from './hand.js';
 const Hand = _Hand;
 
+const ACE = 14;
+const TWO = 2;
+
 // ↑↑↑ Uncomment this for running on node.js ↑↑↑
 
 /**
@@ -105,7 +108,9 @@ class PokerHand extends Hand {
         for (let thirdCardIterator = 0; thirdCardIterator < this.cards.length; thirdCardIterator++) {
           for (let fourthCardIterator = 0; fourthCardIterator < this.cards.length; fourthCardIterator++) {
             for (let fifthCardIterator = 0; fifthCardIterator < this.cards.length; fifthCardIterator++) {
-              if ((this.cards[firstCardIterator].rank === (this.cards[secondCardIterator].rank + 1)) && (this.cards[secondCardIterator].rank === (this.cards[thirdCardIterator].rank + 1)) && (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank + 1)) && (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank + 1))) {
+              if ((this.cards[firstCardIterator].rank === (this.cards[secondCardIterator].rank - 1)) && (this.cards[secondCardIterator].rank === (this.cards[thirdCardIterator].rank - 1)) && (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) && (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
+                return true;
+              } else if ((this.cards[firstCardIterator].rank === ACE) && (this.cards[secondCardIterator].rank === TWO) && (this.cards[secondCardIterator].rank === (this.cards[thirdCardIterator].rank - 1)) && (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) && (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
                 return true;
               }
             }
