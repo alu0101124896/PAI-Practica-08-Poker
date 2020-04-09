@@ -67,9 +67,9 @@ class Hand {
   }
 
   /**
-   * @description Function that removes the first card from the deck and returns it
+   * @description Function that removes the first card from the hand and returns it
    *
-   * @returns {Card} Returns the first card of the deck
+   * @returns {Card} Returns the first card of the hand
    * @memberof Deck
    */
   popCard() {

@@ -119,7 +119,7 @@ describe('Poker Hand Class', () => {
 
     it('Has two pairs', () => {
       myPokerHand.addCard(new Card(SPADES, THREE));
-      myPokerHand.addCard(new Card(SPADES, EIGHT));
+      myPokerHand.addCard(new Card(DIAMONDS, EIGHT));
       myPokerHand.addCard(new Card(DIAMONDS, ACE));
       myPokerHand.addCard(new Card(DIAMONDS, FIVE));
       expect(myPokerHand.cards.length).to.be.equal(4);
@@ -135,23 +135,33 @@ describe('Poker Hand Class', () => {
     });
 
     it('Has straight', () => {
-      myPokerHand.addCard(new Card(HEARTS, FOUR));
+      myPokerHand.addCard(new Card(DIAMONDS, FOUR));
       myPokerHand.addCard(new Card(HEARTS, SEVEN));
-      myPokerHand.addCard(new Card(HEARTS, FIVE));
+      myPokerHand.addCard(new Card(DIAMONDS, FIVE));
       myPokerHand.addCard(new Card(HEARTS, THREE));
-      myPokerHand.addCard(new Card(HEARTS, SIX));
+      myPokerHand.addCard(new Card(SPADES, SIX));
       expect(myPokerHand.cards.length).to.be.equal(5);
       expect(myPokerHand.hasStraight()).to.be.equal(true);
     });
 
     it('Has a special case of a straight', () => {
-      myPokerHand.addCard(new Card(HEARTS, FOUR));
+      myPokerHand.addCard(new Card(DIAMONDS, FOUR));
       myPokerHand.addCard(new Card(HEARTS, TWO));
-      myPokerHand.addCard(new Card(HEARTS, FIVE));
-      myPokerHand.addCard(new Card(HEARTS, THREE));
+      myPokerHand.addCard(new Card(CLUBS, FIVE));
+      myPokerHand.addCard(new Card(SPADES, THREE));
       myPokerHand.addCard(new Card(HEARTS, ACE));
       expect(myPokerHand.cards.length).to.be.equal(5);
       expect(myPokerHand.hasStraight()).to.be.equal(true);
+    });
+
+    it('Has a flush', () => {
+      myPokerHand.addCard(new Card(HEARTS, FOUR));
+      myPokerHand.addCard(new Card(HEARTS, NINE));
+      myPokerHand.addCard(new Card(HEARTS, KING));
+      myPokerHand.addCard(new Card(HEARTS, SEVEN));
+      myPokerHand.addCard(new Card(HEARTS, ACE));
+      expect(myPokerHand.cards.length).to.be.equal(5);
+      expect(myPokerHand.hasFlush()).to.be.equal(true);
     });
   });
 });

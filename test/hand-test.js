@@ -90,18 +90,19 @@ describe('Hand Class', () => {
 
     it('Add a card', () => {
       expect(myHand.addCard(TWO_OF_CLUBS)).to.be.equal(true);
-      expect(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(TWO_OF_CLUBS);
+      expect(myHand.addCard(THREE_OF_CLUBS)).to.be.equal(true);
+      expect(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(THREE_OF_CLUBS);
+      expect(myHand.cards[myHand.cards.length - 2]).to.be.deep.equal(TWO_OF_CLUBS);
+      expect(myHand.cards.length).to.be.equal(2);
+    });
+
+    it('Remove a specific card', () => {
+      expect(myHand.removeCard(THREE_OF_CLUBS)).to.be.deep.equal(THREE_OF_CLUBS);
       expect(myHand.cards.length).to.be.equal(1);
     });
 
     it('Pop a card', () => {
       expect(myHand.popCard()).to.be.deep.equal(TWO_OF_CLUBS);
-      expect(myHand.cards.length).to.be.equal(0);
-    });
-
-    it('Remove a specific card', () => {
-      expect(myHand.addCard(TWO_OF_CLUBS)).to.be.equal(true);
-      expect(myHand.removeCard(TWO_OF_CLUBS)).to.be.deep.equal(TWO_OF_CLUBS);
       expect(myHand.cards.length).to.be.equal(0);
     });
 
