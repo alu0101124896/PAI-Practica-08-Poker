@@ -31,8 +31,8 @@ class PokerHand extends Hand{
    *
    * @memberof PokerHand
    */
-  constructor() {
-    super();
+  constructor(label = '') {
+    super(label);
   }
 }
 

@@ -56,7 +56,7 @@ describe('Poker Hand Class', () => {
       myPokerHand = new PokerHand(LABEL);
     });
 
-    it('Poker Hand has an inherided label', () => {
+    it('Poker Hand has an inherited label', () => {
       expect(myPokerHand).to.have.property('label');
       expect(myPokerHand.label).to.be.a('string');
       expect(myPokerHand.label).to.be.equal(LABEL);
