@@ -24,7 +24,7 @@ const Hand = _Hand;
  *
  * @class PokerHand
  */
-class PokerHand extends Hand{
+class PokerHand extends Hand {
 
   /**
    * @description Constructor that creates an instance of a poker hand.
@@ -33,6 +33,17 @@ class PokerHand extends Hand{
    */
   constructor(label = '') {
     super(label);
+  }
+
+  hasPair() {
+    for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 1; firstCardIterator++) {
+      for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length; secondCardIterator++) {
+        if (this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
 

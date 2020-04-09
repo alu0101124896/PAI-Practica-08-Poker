@@ -107,7 +107,7 @@ describe('Poker Hand Class', () => {
     let myPokerHand = new PokerHand('new hand');
 
     it('Has a pair', () => {
-      myPokerHand.addCard(new Card(DIAMONDS, EIGHT));
+      myPokerHand.addCard(new Card(SPADES, THREE));
       myPokerHand.addCard(new Card(SPADES, EIGHT));
       expect(myPokerHand.cards.length).to.be.equal(2);
       expect(myPokerHand.hasPair()).to.be.equal(true);
