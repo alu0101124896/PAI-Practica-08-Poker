@@ -76,4 +76,18 @@ describe('Poker Hand Class', () => {
       expect(MY_POKER_HAND.toString()).to.be.equal('');
     });
   });
+
+  describe('Hand methods', () => {
+    const TWO_OF_CLUBS = new Card(CLUBS, TWO);
+    const THREE_OF_CLUBS = new Card(CLUBS, THREE);
+
+    let myDeck = new Deck();
+    let myPokerHand = new PokerHand('new hand');
+
+    it('Add a card', () => {
+      myPokerHand.addCard(TWO_OF_CLUBS);
+      expect(myPokerHand.cards[myPokerHand.cards.length - 1]).to.be.deep.equal(TWO_OF_CLUBS);
+      expect(myPokerHand.cards.length).to.be.equal(1);
+    });
+  });
 });
