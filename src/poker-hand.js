@@ -87,7 +87,8 @@ class PokerHand extends Hand {
     for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 2; firstCardIterator++) {
       for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length - 1; secondCardIterator++) {
         for (let thirdCardIterator = secondCardIterator + 1; thirdCardIterator < this.cards.length; thirdCardIterator++) {
-          if ((this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) && (this.cards[firstCardIterator].suit === this.cards[thirdCardIterator].suit)) {
+          if ((this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) &&
+            (this.cards[firstCardIterator].suit === this.cards[thirdCardIterator].suit)) {
             return true;
           }
         }
@@ -108,9 +109,42 @@ class PokerHand extends Hand {
         for (let thirdCardIterator = 0; thirdCardIterator < this.cards.length; thirdCardIterator++) {
           for (let fourthCardIterator = 0; fourthCardIterator < this.cards.length; fourthCardIterator++) {
             for (let fifthCardIterator = 0; fifthCardIterator < this.cards.length; fifthCardIterator++) {
-              if ((this.cards[firstCardIterator].rank === (this.cards[secondCardIterator].rank - 1)) && (this.cards[secondCardIterator].rank === (this.cards[thirdCardIterator].rank - 1)) && (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) && (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
+              if ((this.cards[firstCardIterator].rank === (this.cards[secondCardIterator].rank - 1)) &&
+                (this.cards[secondCardIterator].rank === (this.cards[thirdCardIterator].rank - 1)) &&
+                (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) &&
+                (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
                 return true;
-              } else if ((this.cards[firstCardIterator].rank === ACE) && (this.cards[secondCardIterator].rank === TWO) && (this.cards[secondCardIterator].rank === (this.cards[thirdCardIterator].rank - 1)) && (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) && (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
+              } else if ((this.cards[firstCardIterator].rank === ACE) &&
+                (this.cards[secondCardIterator].rank === TWO) &&
+                (this.cards[secondCardIterator].rank === (this.cards[thirdCardIterator].rank - 1)) &&
+                (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) &&
+                (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
+                return true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  /**
+   * @description Function that searchs for a flush in the hand
+   *
+   * @returns {boolean} Returns true if a flush is found
+   * @memberof PokerHand
+   */
+  hasFlush() {
+    for (let firstCardIterator = 0; firstCardIterator < this.cards.length; firstCardIterator++) {
+      for (let secondCardIterator = 0; secondCardIterator < this.cards.length; secondCardIterator++) {
+        for (let thirdCardIterator = 0; thirdCardIterator < this.cards.length; thirdCardIterator++) {
+          for (let fourthCardIterator = 0; fourthCardIterator < this.cards.length; fourthCardIterator++) {
+            for (let fifthCardIterator = 0; fifthCardIterator < this.cards.length; fifthCardIterator++) {
+              if ((this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) &&
+                (this.cards[secondCardIterator].suit === this.cards[thirdCardIterator].suit) &&
+                (this.cards[thirdCardIterator].suit === this.cards[fourthCardIterator].suit) &&
+                (this.cards[fourthCardIterator].suit === this.cards[fifthCardIterator].suit)) {
                 return true;
               }
             }

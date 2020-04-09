@@ -154,7 +154,7 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.hasStraight()).to.be.equal(true);
     });
 
-    it('Has a flush', () => {
+    it('Has flush', () => {
       myPokerHand.addCard(new Card(HEARTS, FOUR));
       myPokerHand.addCard(new Card(HEARTS, NINE));
       myPokerHand.addCard(new Card(HEARTS, KING));
