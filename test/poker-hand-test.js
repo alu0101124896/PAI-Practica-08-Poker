@@ -68,4 +68,12 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.cards.length).to.be.equal(0);
     });
   });
+
+  describe('Poker hand to string', () => {
+    const MY_POKER_HAND = new PokerHand('new hand');
+
+    it('Default value', () => {
+      expect(MY_POKER_HAND.toString()).to.be.equal('');
+    });
+  });
 });
