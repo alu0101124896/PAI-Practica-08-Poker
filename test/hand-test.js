@@ -46,15 +46,17 @@ const TWO = 2;
 
 describe('Hand Class', () => {
   describe('Default properties', () => {
+    const LABEL = 'new hand';
     let myHand;
 
     beforeEach(() => {
-      myHand = new Hand('new hand');
+      myHand = new Hand(LABEL);
     });
 
     it('Hand has a label', () => {
       expect(myHand).to.have.property('label');
       expect(myHand.label).to.be.a('string');
+      expect(myHand.label).to.be.equal(LABEL);
     });
 
     it('Hand has an array of cards', () => {

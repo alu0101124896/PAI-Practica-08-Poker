@@ -48,4 +48,18 @@ const TWO = 2;
 // ↑↑↑ Uncomment this for running on node.js ↑↑↑
 
 describe('Poker Hand Class', () => {
+  describe('Default properties', () => {
+    const LABEL = 'new hand';
+    let myPokerHand;
+
+    beforeEach(() => {
+      myPokerHand = new PokerHand(LABEL);
+    });
+
+    it('Poker Hand has an inherided label', () => {
+      expect(myPokerHand).to.have.property('label');
+      expect(myPokerHand.label).to.be.a('string');
+      expect(myPokerHand.label).to.be.equal(LABEL);
+    });
+  });
 });
