@@ -53,10 +53,17 @@ class Hand {
    * @description Function that adds a given card at the end of the hand
    *
    * @param {Card} newCard - Card to be added to the end of the hand
+   * @returns {boolean} Returns true if success and false if failed
    * @memberof Hand
    */
   addCard(newCard) {
-    this.cards.push(newCard);
+    if (this.cards.length < this.maxCards) {
+      this.cards.push(newCard);
+      return true;
+    } else {
+      console.error('Error: El número de cartas en la mano ha superado el máximo');
+      return false;
+    }
   }
 
   /**
@@ -68,7 +75,7 @@ class Hand {
    */
   popCard(cardToPop) {
     const INDEX_OF_CARD = this.cards.indexOf(cardToPop)
-    if(INDEX_OF_CARD !== -1) {
+    if (INDEX_OF_CARD !== -1) {
       const POPPED_CARD = this.cards[INDEX_OF_CARD];
       this.cards.splice(INDEX_OF_CARD, 1);
       return POPPED_CARD;
@@ -84,7 +91,7 @@ class Hand {
    * @param {*} destinySet - Destiny deck/hand of cards
    * @memberof Hand
    */
-  static moveCards (sourceSet, numOfCards, destinySet) {
+  static moveCards(sourceSet, numOfCards, destinySet) {
     for (let cardsIterator = 0; cardsIterator < numOfCards; cardsIterator++) {
       destinySet.addCard(sourceSet.popCard());
     }

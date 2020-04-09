@@ -89,7 +89,7 @@ describe('Hand Class', () => {
     let myHand = new Hand('new hand');
 
     it('Add a card', () => {
-      myHand.addCard(TWO_OF_CLUBS);
+      expect(myHand.addCard(TWO_OF_CLUBS)).to.be.equal(true);
       expect(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(TWO_OF_CLUBS);
       expect(myHand.cards.length).to.be.equal(1);
     });
