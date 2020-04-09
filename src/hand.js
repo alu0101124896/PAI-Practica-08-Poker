@@ -28,8 +28,9 @@ class Hand {
    *
    * @memberof Hand
    */
-  constructor(label = '') {
+  constructor(label = '', maxCards = 5) {
     this.label = label;
+    this.maxCards = maxCards;
     this.cards = [];
   }
 

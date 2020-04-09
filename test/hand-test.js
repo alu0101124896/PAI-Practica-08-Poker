@@ -51,7 +51,7 @@ describe('Hand Class', () => {
     let myHand;
 
     beforeEach(() => {
-      myHand = new Hand(LABEL);
+      myHand = new Hand(LABEL, MAX_CARDS);
     });
 
     it('Hand has a label', () => {
@@ -62,8 +62,8 @@ describe('Hand Class', () => {
 
     it('Hand has a max number of cards', () => {
       expect(myHand).to.have.property('maxCards');
-      expect(myHand.label).to.be.a('number');
-      expect(myHand.label).to.be.equal(MAX_CARDS);
+      expect(myHand.maxCards).to.be.a('number');
+      expect(myHand.maxCards).to.be.equal(MAX_CARDS);
     });
 
     it('Hand has an array of cards', () => {
