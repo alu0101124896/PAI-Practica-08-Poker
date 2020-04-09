@@ -56,10 +56,16 @@ describe('Poker Hand Class', () => {
       myPokerHand = new PokerHand(LABEL);
     });
 
-    it('Poker Hand has an inherited label', () => {
+    it('Poker hand has an inherited label', () => {
       expect(myPokerHand).to.have.property('label');
       expect(myPokerHand.label).to.be.a('string');
       expect(myPokerHand.label).to.be.equal(LABEL);
+    });
+
+    it('Poker hand has an inherited array of cards', () => {
+      expect(myPokerHand).to.have.property('cards');
+      expect(myPokerHand.cards).to.be.an('array');
+      expect(myPokerHand.cards.length).to.be.equal(0);
     });
   });
 });
