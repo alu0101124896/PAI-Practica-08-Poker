@@ -94,8 +94,14 @@ describe('Hand Class', () => {
       expect(myHand.cards.length).to.be.equal(1);
     });
 
-    it('Pop a specific card', () => {
-      expect(myHand.popCard(TWO_OF_CLUBS)).to.be.deep.equal(TWO_OF_CLUBS);
+    it('Pop a card', () => {
+      expect(myHand.popCard()).to.be.deep.equal(TWO_OF_CLUBS);
+      expect(myHand.cards.length).to.be.equal(0);
+    });
+
+    it('Remove a specific card', () => {
+      expect(myHand.addCard(TWO_OF_CLUBS)).to.be.equal(true);
+      expect(myHand.removeCard(TWO_OF_CLUBS)).to.be.deep.equal(TWO_OF_CLUBS);
       expect(myHand.cards.length).to.be.equal(0);
     });
 

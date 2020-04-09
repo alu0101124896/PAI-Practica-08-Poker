@@ -89,6 +89,8 @@ class Deck {
       const FIRST_CARD = this.cards[0];
       this.cards.splice(0, 1);
       return FIRST_CARD;
+    } else {
+      console.error('Error: No se pueden extraer cartas de un mazo vacio.')
     }
   }
 

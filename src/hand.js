@@ -61,8 +61,24 @@ class Hand {
       this.cards.push(newCard);
       return true;
     } else {
-      console.error('Error: El número de cartas en la mano ha superado el máximo');
+      console.error('Error: El número de cartas en la mano ha superado el máximo.');
       return false;
+    }
+  }
+
+  /**
+   * @description Function that removes the first card from the deck and returns it
+   *
+   * @returns {Card} Returns the first card of the deck
+   * @memberof Deck
+   */
+  popCard() {
+    if (this.cards.length > 0) {
+      const FIRST_CARD = this.cards[0];
+      this.cards.splice(0, 1);
+      return FIRST_CARD;
+    } else {
+      console.error('Error: No se pueden extraer cartas de un mazo vacio.')
     }
   }
 
@@ -73,14 +89,14 @@ class Hand {
    * @returns {Card} Returns the removed card from the hand
    * @memberof Hand
    */
-  popCard(cardToPop) {
+  removeCard(cardToPop) {
     const INDEX_OF_CARD = this.cards.indexOf(cardToPop)
     if (INDEX_OF_CARD !== -1) {
       const POPPED_CARD = this.cards[INDEX_OF_CARD];
       this.cards.splice(INDEX_OF_CARD, 1);
       return POPPED_CARD;
     } else {
-      console.error('Error: No se puede extraer una carta que no pertenece a la mano');
+      console.error('Error: No se puede extraer una carta que no pertenece a la mano.');
       return false;
     }
   }
@@ -100,10 +116,10 @@ class Hand {
         if (sourceSet.cards.length > 0) {
           destinySet.addCard(sourceSet.popCard());
         } else {
-          console.error('Error: No quedan cartas disponibles en el/la mazo/mano de origen')
+          console.error('Error: No quedan cartas disponibles en el/la mazo/mano de origen.')
         }
       } else {
-        console.error('Error: Número maximo de cartas alcanzado en el/la mazo/mano de destino')
+        console.error('Error: Número maximo de cartas alcanzado en el/la mazo/mano de destino.')
       }
     }
   }
