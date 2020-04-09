@@ -94,5 +94,12 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.popCard(TWO_OF_CLUBS)).to.be.deep.equal(TWO_OF_CLUBS);
       expect(myPokerHand.cards.length).to.be.equal(0);
     });
+
+    it('Move cards', () => {
+      Hand.moveCards(myDeck, 2, myPokerHand);
+      expect(myPokerHand.cards[0]).to.be.deep.equal(TWO_OF_CLUBS);
+      expect(myPokerHand.cards[1]).to.be.deep.equal(THREE_OF_CLUBS);
+      expect(myPokerHand.cards.length).to.be.equal(2);
+    });
   });
 });
