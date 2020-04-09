@@ -48,7 +48,7 @@ const TWO = 2;
 // ↑↑↑ Uncomment this for running on node.js ↑↑↑
 
 describe('Poker Hand Class', () => {
-  describe('Default properties', () => {
+  describe('Default inherited properties', () => {
     const LABEL = 'new hand';
     let myPokerHand;
 
@@ -69,7 +69,7 @@ describe('Poker Hand Class', () => {
     });
   });
 
-  describe('Poker hand to string', () => {
+  describe('Poker hand inherited to string', () => {
     const MY_POKER_HAND = new PokerHand('new hand');
 
     it('Default value', () => {
@@ -77,7 +77,7 @@ describe('Poker Hand Class', () => {
     });
   });
 
-  describe('Hand methods', () => {
+  describe('Poker hand inherited methods', () => {
     const TWO_OF_CLUBS = new Card(CLUBS, TWO);
     const THREE_OF_CLUBS = new Card(CLUBS, THREE);
 
@@ -88,6 +88,11 @@ describe('Poker Hand Class', () => {
       myPokerHand.addCard(TWO_OF_CLUBS);
       expect(myPokerHand.cards[myPokerHand.cards.length - 1]).to.be.deep.equal(TWO_OF_CLUBS);
       expect(myPokerHand.cards.length).to.be.equal(1);
+    });
+
+    it('Pop a specific card', () => {
+      expect(myPokerHand.popCard(TWO_OF_CLUBS)).to.be.deep.equal(TWO_OF_CLUBS);
+      expect(myPokerHand.cards.length).to.be.equal(0);
     });
   });
 });
