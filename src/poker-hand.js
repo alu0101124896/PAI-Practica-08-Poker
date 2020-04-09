@@ -35,6 +35,12 @@ class PokerHand extends Hand {
     super(label);
   }
 
+  /**
+   * @description Function that searchs for a pair in the hand
+   *
+   * @returns {boolean} Returns true if a pair is found
+   * @memberof PokerHand
+   */
   hasPair() {
     for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 1; firstCardIterator++) {
       for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length; secondCardIterator++) {
@@ -44,6 +50,28 @@ class PokerHand extends Hand {
       }
     }
     return false;
+  }
+
+  /**
+   * @description Function that searchs for two pairs in the hand
+   *
+   * @returns {boolean} Returns true if two pairs are found
+   * @memberof PokerHand
+   */
+  hasTwoPairs() {
+    let foundPairs = 0;
+    for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 1; firstCardIterator++) {
+      for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length; secondCardIterator++) {
+        if (this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) {
+          foundPairs++;
+        }
+      }
+    }
+    if (foundPairs >= 2) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
