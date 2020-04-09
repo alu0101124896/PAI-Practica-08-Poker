@@ -47,7 +47,7 @@ class PokerHand extends Hand {
   hasPair() {
     for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 1; firstCardIterator++) {
       for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length; secondCardIterator++) {
-        if (this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) {
+        if (this.cards[firstCardIterator].rank === this.cards[secondCardIterator].rank) {
           return true;
         }
       }
@@ -65,7 +65,7 @@ class PokerHand extends Hand {
     let foundPairs = 0;
     for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 1; firstCardIterator++) {
       for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length; secondCardIterator++) {
-        if (this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) {
+        if (this.cards[firstCardIterator].rank === this.cards[secondCardIterator].rank) {
           foundPairs++;
         }
       }
@@ -87,8 +87,8 @@ class PokerHand extends Hand {
     for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 2; firstCardIterator++) {
       for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length - 1; secondCardIterator++) {
         for (let thirdCardIterator = secondCardIterator + 1; thirdCardIterator < this.cards.length; thirdCardIterator++) {
-          if ((this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) &&
-            (this.cards[firstCardIterator].suit === this.cards[thirdCardIterator].suit)) {
+          if ((this.cards[firstCardIterator].rank === this.cards[secondCardIterator].rank) &&
+            (this.cards[firstCardIterator].rank === this.cards[thirdCardIterator].rank)) {
             return true;
           }
         }

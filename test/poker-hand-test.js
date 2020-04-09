@@ -112,24 +112,24 @@ describe('Poker Hand Class', () => {
 
     it('Has a pair', () => {
       myPokerHand.addCard(new Card(SPADES, THREE));
-      myPokerHand.addCard(new Card(SPADES, EIGHT));
+      myPokerHand.addCard(new Card(HEARTS, THREE));
       expect(myPokerHand.cards.length).to.be.equal(2);
       expect(myPokerHand.hasPair()).to.be.equal(true);
     });
 
     it('Has two pairs', () => {
-      myPokerHand.addCard(new Card(SPADES, THREE));
-      myPokerHand.addCard(new Card(DIAMONDS, EIGHT));
+      myPokerHand.addCard(new Card(SPADES, FIVE));
       myPokerHand.addCard(new Card(DIAMONDS, ACE));
-      myPokerHand.addCard(new Card(DIAMONDS, FIVE));
+      myPokerHand.addCard(new Card(CLUBS, ACE));
+      myPokerHand.addCard(new Card(HEARTS, FIVE));
       expect(myPokerHand.cards.length).to.be.equal(4);
       expect(myPokerHand.hasTwoPairs()).to.be.equal(true);
     });
 
     it('Has three of a kind', () => {
-      myPokerHand.addCard(new Card(HEARTS, THREE));
+      myPokerHand.addCard(new Card(DIAMONDS, QUEEN));
+      myPokerHand.addCard(new Card(CLUBS, QUEEN));
       myPokerHand.addCard(new Card(HEARTS, QUEEN));
-      myPokerHand.addCard(new Card(HEARTS, SIX));
       expect(myPokerHand.cards.length).to.be.equal(3);
       expect(myPokerHand.hasThreeOfaKind()).to.be.equal(true);
     });
@@ -162,6 +162,16 @@ describe('Poker Hand Class', () => {
       myPokerHand.addCard(new Card(HEARTS, ACE));
       expect(myPokerHand.cards.length).to.be.equal(5);
       expect(myPokerHand.hasFlush()).to.be.equal(true);
+    });
+
+    it('Has full house', () => {
+      myPokerHand.addCard(new Card(HEARTS, NINE));
+      myPokerHand.addCard(new Card(DIAMONDS, QUEEN));
+      myPokerHand.addCard(new Card(CLUBS, QUEEN));
+      myPokerHand.addCard(new Card(HEARTS, NINE));
+      myPokerHand.addCard(new Card(HEARTS, QUEEN));
+      expect(myPokerHand.cards.length).to.be.equal(5);
+      expect(myPokerHand.hasFullHouse()).to.be.equal(true);
     });
   });
 });
