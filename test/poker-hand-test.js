@@ -143,5 +143,15 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.cards.length).to.be.equal(5);
       expect(myPokerHand.hasStraight()).to.be.equal(true);
     });
+
+    it('Has a strange straight', () => {
+      myPokerHand.addCard(new Card(HEARTS, FOUR));
+      myPokerHand.addCard(new Card(HEARTS, TWO));
+      myPokerHand.addCard(new Card(HEARTS, FIVE));
+      myPokerHand.addCard(new Card(HEARTS, THREE));
+      myPokerHand.addCard(new Card(HEARTS, ACE));
+      expect(myPokerHand.cards.length).to.be.equal(5);
+      expect(myPokerHand.hasStraight()).to.be.equal(true);
+    });
   });
 });
