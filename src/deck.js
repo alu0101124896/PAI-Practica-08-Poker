@@ -60,6 +60,7 @@ class Deck {
         this.cards.push(new Card(suit, rank));
       });
     });
+    this.maxCards = SUITS.length * RANKS.length;
   }
 
   /**

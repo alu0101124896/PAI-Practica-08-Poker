@@ -79,6 +79,9 @@ class Hand {
       const POPPED_CARD = this.cards[INDEX_OF_CARD];
       this.cards.splice(INDEX_OF_CARD, 1);
       return POPPED_CARD;
+    } else {
+      console.error('Error: No se puede extraer una carta que no pertenece a la mano');
+      return false;
     }
   }
 
@@ -93,7 +96,15 @@ class Hand {
    */
   static moveCards(sourceSet, numOfCards, destinySet) {
     for (let cardsIterator = 0; cardsIterator < numOfCards; cardsIterator++) {
-      destinySet.addCard(sourceSet.popCard());
+      if (destinySet.cards.length < destinySet.maxCards) {
+        if (sourceSet.cards.length > 0) {
+          destinySet.addCard(sourceSet.popCard());
+        } else {
+          console.error('Error: No quedan cartas disponibles en el/la mazo/mano de origen')
+        }
+      } else {
+        console.error('Error: Número maximo de cartas alcanzado en el/la mazo/mano de destino')
+      }
     }
   }
 }
