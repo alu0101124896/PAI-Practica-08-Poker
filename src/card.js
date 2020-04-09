@@ -9,24 +9,24 @@
 
 "use strict";
 
-const SPADES = 'S';
-const HEARTS = 'H';
-const DIAMONDS = 'D';
-const CLUBS = 'C';
+const SPADES = 4;
+const HEARTS = 3;
+const DIAMONDS = 2;
+const CLUBS = 1;
 
-const ACE = 'A';
-const KING = 'K';
-const QUEEN = 'Q';
-const JACK = 'J';
-const TEN = '10';
-const NINE = '9';
-const EIGHT = '8';
-const SEVEN = '7';
-const SIX = '6';
-const FIVE = '5';
-const FOUR = '4';
-const THREE = '3';
-const TWO = '2';
+const ACE = 14;
+const KING = 13;
+const QUEEN = 12;
+const JACK = 11;
+const TEN = 10;
+const NINE = 9;
+const EIGHT = 8;
+const SEVEN = 7;
+const SIX = 6;
+const FIVE = 5;
+const FOUR = 4;
+const THREE = 3;
+const TWO = 2;
 
 /**
  * @description Class representing a card
@@ -121,7 +121,7 @@ class Card {
   }
 
   /**
-   * @description Function that compares two cards to see which one has the higher suit. In case of tie, calls the rankComparator function
+   * @description Function that compares two cards to see which one has the higher suit. In case of tie, compares the ranks.
    *
    * @static
    * @param {Card} cardOne - First card to compare
@@ -130,114 +130,13 @@ class Card {
    * @memberof Card
    */
   static compare(cardOne, cardTwo) {
-    if (cardOne.suit === SPADES) {
-      if (cardTwo.suit === SPADES) {
-        return Card.rankComparator(cardOne, cardTwo);
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.suit === HEARTS) {
-      if (cardTwo.suit === SPADES) {
-        return cardTwo;
-      } else if (cardTwo.suit === HEARTS) {
-        return Card.rankComparator(cardOne, cardTwo);
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.suit === DIAMONDS) {
-      if ((cardTwo.suit === SPADES) || (cardTwo.suit === HEARTS)) {
-        return cardTwo;
-      } else if (cardTwo.suit === DIAMONDS) {
-        return Card.rankComparator(cardOne, cardTwo);
-      } else {
-        return cardOne;
-      }
-    } else {
-      if ((cardTwo.suit === SPADES) || (cardTwo.suit === HEARTS) || (cardTwo.suit === DIAMONDS)) {
-        return cardTwo;
-      } else {
-        return Card.rankComparator(cardOne, cardTwo);
-      }
-    }
-  }
-
-  /**
-   * @description Function that compares two cards to see which one has the higher rank
-   *
-   * @static
-   * @param {Card} cardOne - First card to compare
-   * @param {Card} cardTwo - Second card to compare
-   * @returns {Card} Returns the card with the highest rank
-   * @memberof Card
-   */
-  static rankComparator(cardOne, cardTwo) {
-    if (cardOne.rank === ACE) {
+    if (cardOne.suit > cardTwo.suit) {
       return cardOne;
-    } else if (cardOne.rank === KING) {
-      if (cardTwo.rank === ACE) {
-        return cardTwo;
-      } else {
+    } else if (cardOne.suit === cardTwo.suit) {
+      if (cardOne.rank >= cardTwo.rank) {
         return cardOne;
-      }
-    } else if (cardOne.rank === QUEEN) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING)) {
-        return cardTwo;
       } else {
-        return cardOne;
-      }
-    } else if (cardOne.rank === JACK) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN)) {
         return cardTwo;
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.rank === TEN) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK)) {
-        return cardTwo;
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.rank === NINE) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN)) {
-        return cardTwo;
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.rank === EIGHT) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE)) {
-        return cardTwo;
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.rank === SEVEN) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT)) {
-        return cardTwo;
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.rank === SIX) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN)) {
-        return cardTwo;
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.rank === FIVE) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX)) {
-        return cardTwo;
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.rank === FOUR) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX) || (cardTwo.rank === FIVE)) {
-        return cardTwo;
-      } else {
-        return cardOne;
-      }
-    } else if (cardOne.rank === THREE) {
-      if ((cardTwo.rank === ACE) || (cardTwo.rank === KING) || (cardTwo.rank === QUEEN) || (cardTwo.rank === JACK) || (cardTwo.rank === TEN) || (cardTwo.rank === NINE) || (cardTwo.rank === EIGHT) || (cardTwo.rank === SEVEN) || (cardTwo.rank === SIX) || (cardTwo.rank === FIVE) || (cardTwo.rank === FOUR)) {
-        return cardTwo;
-      } else {
-        return cardOne;
       }
     } else {
       return cardTwo;
@@ -245,4 +144,8 @@ class Card {
   }
 }
 
+// ↓↓↓ Uncomment this for running on node.js ↓↓↓
+
 export const Card_ = Card;
+
+// ↑↑↑ Uncomment this for running on node.js ↑↑↑

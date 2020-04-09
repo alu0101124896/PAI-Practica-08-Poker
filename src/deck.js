@@ -9,14 +9,37 @@
 
 "use strict";
 
+// ↓↓↓ Uncomment this for running on node.js ↓↓↓
+
 import { Card_ as _Card } from './card.js';
 const Card = _Card;
 
-import { Hand_ as _Hand } from '../src/hand.js';
+import { Hand_ as _Hand } from './hand.js';
 const Hand = _Hand;
 
-const SUITS = ['C', 'D', 'H', 'S'];
-const RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+const SPADES = 4;
+const HEARTS = 3;
+const DIAMONDS = 2;
+const CLUBS = 1;
+
+const ACE = 14;
+const KING = 13;
+const QUEEN = 12;
+const JACK = 11;
+const TEN = 10;
+const NINE = 9;
+const EIGHT = 8;
+const SEVEN = 7;
+const SIX = 6;
+const FIVE = 5;
+const FOUR = 4;
+const THREE = 3;
+const TWO = 2;
+
+// ↑↑↑ Uncomment this for running on node.js ↑↑↑
+
+const SUITS = [CLUBS, DIAMONDS, HEARTS, SPADES];
+const RANKS = [TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE];
 
 /**
  * @description Class representing a deck of cards
@@ -173,4 +196,8 @@ class Deck {
   }
 }
 
+// ↓↓↓ Uncomment this for running on node.js ↓↓↓
+
 export const Deck_ = Deck;
+
+// ↑↑↑ Uncomment this for running on node.js ↑↑↑

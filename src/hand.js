@@ -9,11 +9,15 @@
 
 "use strict";
 
+// ↓↓↓ Uncomment this for running on node.js ↓↓↓
+
 import { Card_ as _Card } from './card.js';
 const Card = _Card;
 
+// ↑↑↑ Uncomment this for running on node.js ↑↑↑
+
 /**
- * @description Class representing a Hand of cards
+ * @description Class representing a hand of cards
  *
  * @class Hand
  */
@@ -86,4 +90,8 @@ class Hand {
   }
 }
 
+// ↓↓↓ Uncomment this for running on node.js ↓↓↓
+
 export const Hand_ = Hand;
+
+// ↑↑↑ Uncomment this for running on node.js ↑↑↑
