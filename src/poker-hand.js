@@ -73,6 +73,25 @@ class PokerHand extends Hand {
       return false;
     }
   }
+
+  /**
+   * @description Function that searchs for three of a kind in the hand
+   *
+   * @returns {boolean} Returns true if three of a kind are found
+   * @memberof PokerHand
+   */
+  hasThreeOfaKind() {
+    for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 2; firstCardIterator++) {
+      for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length - 1; secondCardIterator++) {
+        for (let thirdCardIterator = firstCardIterator + 2; thirdCardIterator < this.cards.length; thirdCardIterator++) {
+          if ((this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) && (this.cards[firstCardIterator].suit === this.cards[thirdCardIterator].suit)) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
 }
 
 // ↓↓↓ Uncomment this for running on node.js ↓↓↓
