@@ -103,14 +103,27 @@ describe('Poker Hand Class', () => {
     });
   });
 
-  describe('Poker hand methods', () => {
-    let myPokerHand = new PokerHand('new hand');
+  describe('Poker hand', () => {
+    let myPokerHand;
+
+    beforeEach(() => {
+      myPokerHand = new PokerHand('new hand');
+    });
 
     it('Has a pair', () => {
       myPokerHand.addCard(new Card(SPADES, THREE));
       myPokerHand.addCard(new Card(SPADES, EIGHT));
       expect(myPokerHand.cards.length).to.be.equal(2);
       expect(myPokerHand.hasPair()).to.be.equal(true);
+    });
+
+    it('Has two pairs', () => {
+      myPokerHand.addCard(new Card(SPADES, THREE));
+      myPokerHand.addCard(new Card(SPADES, EIGHT));
+      myPokerHand.addCard(new Card(DIAMONDS, ACE));
+      myPokerHand.addCard(new Card(DIAMONDS, FIVE));
+      expect(myPokerHand.cards.length).to.be.equal(4);
+      expect(myPokerHand.hasTwoPairs()).to.be.equal(true);
     });
   });
 });
