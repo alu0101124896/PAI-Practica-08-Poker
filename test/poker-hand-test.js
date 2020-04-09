@@ -125,5 +125,13 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.cards.length).to.be.equal(4);
       expect(myPokerHand.hasTwoPairs()).to.be.equal(true);
     });
+
+    it('Has three of a kind', () => {
+      myPokerHand.addCard(new Card(HEARTS, THREE));
+      myPokerHand.addCard(new Card(HEARTS, QUEEN));
+      myPokerHand.addCard(new Card(HEARTS, SIX));
+      expect(myPokerHand.cards.length).to.be.equal(3);
+      expect(myPokerHand.hasThreeOfaKind()).to.be.equal(true);
+    });
   });
 });
