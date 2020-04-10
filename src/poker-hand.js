@@ -286,6 +286,30 @@ class PokerHand extends Hand {
     }
     return false;
   }
+
+  classify() {
+    if (this.hasRoyalFlush()) {
+      this.label = 'royal flush';
+    } else if (this.hasStraightFlush()) {
+      this.label = 'straight flush';
+    } else if (this.hasFourOfaKind()) {
+      this.label = 'four of a kind';
+    } else if (this.hasFullHouse()) {
+      this.label = 'full house'
+    } else if (this.hasFlush()) {
+      this.label = 'flush';
+    } else if (this.hasStraight()) {
+      this.label = 'straight';
+    } else if (this.hasThreeOfaKind()) {
+      this.label = 'three of a kind';
+    } else if (this.hasTwoPairs()) {
+      this.label = 'two pairs';
+    } else if (this.hasPair()) {
+      this.label = 'pair';
+    } else {
+      this.label = '';
+    }
+  }
 }
 
 // ↓↓↓ Uncomment this for running on node.js ↓↓↓
