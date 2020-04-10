@@ -168,7 +168,7 @@ describe('Poker Hand Class', () => {
       myPokerHand.addCard(new Card(HEARTS, NINE));
       myPokerHand.addCard(new Card(DIAMONDS, QUEEN));
       myPokerHand.addCard(new Card(CLUBS, QUEEN));
-      myPokerHand.addCard(new Card(HEARTS, NINE));
+      myPokerHand.addCard(new Card(CLUBS, NINE));
       myPokerHand.addCard(new Card(HEARTS, QUEEN));
       expect(myPokerHand.cards.length).to.be.equal(5);
       expect(myPokerHand.hasFullHouse()).to.be.equal(true);

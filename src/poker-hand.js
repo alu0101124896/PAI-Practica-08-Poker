@@ -154,6 +154,43 @@ class PokerHand extends Hand {
     }
     return false;
   }
+
+  /**
+   * @description Function that searchs for a full house in the hand
+   *
+   * @returns {boolean} Returns true if a full house is found
+   * @memberof PokerHand
+   */
+  hasFullHouse() {
+    let tempHand = new Hand();
+    let trio = false;
+    for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 2; firstCardIterator++) {
+      for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length - 1; secondCardIterator++) {
+        for (let thirdCardIterator = secondCardIterator + 1; thirdCardIterator < this.cards.length; thirdCardIterator++) {
+          if ((this.cards[firstCardIterator].rank === this.cards[secondCardIterator].rank) &&
+            (this.cards[firstCardIterator].rank === this.cards[thirdCardIterator].rank)) {
+            tempHand.addCard(this.removeCard(this.cards[thirdCardIterator]));
+            tempHand.addCard(this.removeCard(this.cards[secondCardIterator]));
+            tempHand.addCard(this.removeCard(this.cards[firstCardIterator]));
+            trio = true;
+          }
+        }
+      }
+    }
+    if (trio) {
+      for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 1; firstCardIterator++) {
+        for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length; secondCardIterator++) {
+          if (this.cards[firstCardIterator].rank === this.cards[secondCardIterator].rank) {
+            this.addCard(tempHand.popCard());
+            this.addCard(tempHand.popCard());
+            this.addCard(tempHand.popCard());
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
 }
 
 // ↓↓↓ Uncomment this for running on node.js ↓↓↓

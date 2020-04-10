@@ -57,12 +57,14 @@ class Hand {
    * @memberof Hand
    */
   addCard(newCard) {
-    if (this.cards.length < this.maxCards) {
-      this.cards.push(newCard);
-      return true;
-    } else {
-      console.error('Error: El número de cartas en la mano ha superado el máximo.');
-      return false;
+    if (newCard !== false) {
+      if (this.cards.length < this.maxCards) {
+        this.cards.push(newCard);
+        return true;
+      } else {
+        console.error('Error: El número de cartas en la mano ha superado el máximo.');
+        return false;
+      }
     }
   }
 
