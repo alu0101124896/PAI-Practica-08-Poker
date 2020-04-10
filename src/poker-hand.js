@@ -191,6 +191,29 @@ class PokerHand extends Hand {
     }
     return false;
   }
+
+  /**
+   * @description Function that searchs for four of a kind in the hand
+   *
+   * @returns {boolean} Returns true if four of a kind are found
+   * @memberof PokerHand
+   */
+  hasFourOfaKind() {
+    for (let firstCardIterator = 0; firstCardIterator < this.cards.length - 3; firstCardIterator++) {
+      for (let secondCardIterator = firstCardIterator + 1; secondCardIterator < this.cards.length - 2; secondCardIterator++) {
+        for (let thirdCardIterator = secondCardIterator + 1; thirdCardIterator < this.cards.length - 1; thirdCardIterator++) {
+          for (let fourthCardIterator = thirdCardIterator + 1; fourthCardIterator < this.cards.length; fourthCardIterator++) {
+            if ((this.cards[firstCardIterator].rank === this.cards[secondCardIterator].rank) &&
+              (this.cards[secondCardIterator].rank === this.cards[thirdCardIterator].rank) &&
+              (this.cards[thirdCardIterator].rank === this.cards[fourthCardIterator].rank)) {
+              return true;
+            }
+          }
+        }
+      }
+      return false;
+    }
+  }
 }
 
 // ↓↓↓ Uncomment this for running on node.js ↓↓↓
