@@ -173,5 +173,14 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.cards.length).to.be.equal(5);
       expect(myPokerHand.hasFullHouse()).to.be.equal(true);
     });
+
+    it('Has four of a kind', () => {
+      myPokerHand.addCard(new Card(HEARTS, JACK));
+      myPokerHand.addCard(new Card(DIAMONDS, JACK));
+      myPokerHand.addCard(new Card(CLUBS, JACK));
+      myPokerHand.addCard(new Card(SPADES, JACK));
+      expect(myPokerHand.cards.length).to.be.equal(4);
+      expect(myPokerHand.hasFourOfaKind()).to.be.equal(true);
+    });
   });
 });
