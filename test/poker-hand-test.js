@@ -182,5 +182,15 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.cards.length).to.be.equal(4);
       expect(myPokerHand.hasFourOfaKind()).to.be.equal(true);
     });
+
+    it('Has straigt flush', () => {
+      myPokerHand.addCard(new Card(DIAMONDS, FOUR));
+      myPokerHand.addCard(new Card(DIAMONDS, SEVEN));
+      myPokerHand.addCard(new Card(DIAMONDS, FIVE));
+      myPokerHand.addCard(new Card(DIAMONDS, THREE));
+      myPokerHand.addCard(new Card(DIAMONDS, SIX));
+      expect(myPokerHand.cards.length).to.be.equal(5);
+      expect(myPokerHand.hasStraightFlush()).to.be.equal(true);
+    });
   });
 });
