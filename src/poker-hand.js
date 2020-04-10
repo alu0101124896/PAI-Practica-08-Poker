@@ -255,6 +255,37 @@ class PokerHand extends Hand {
     }
     return false;
   }
+
+  /**
+   * @description Function that searchs for a flush in the hand
+   *
+   * @returns {boolean} Returns true if a flush is found
+   * @memberof PokerHand
+   */
+  hasRoyalFlush() {
+    for (let firstCardIterator = 0; firstCardIterator < this.cards.length; firstCardIterator++) {
+      for (let secondCardIterator = 0; secondCardIterator < this.cards.length; secondCardIterator++) {
+        for (let thirdCardIterator = 0; thirdCardIterator < this.cards.length; thirdCardIterator++) {
+          for (let fourthCardIterator = 0; fourthCardIterator < this.cards.length; fourthCardIterator++) {
+            for (let fifthCardIterator = 0; fifthCardIterator < this.cards.length; fifthCardIterator++) {
+              if ((this.cards[firstCardIterator].suit === this.cards[secondCardIterator].suit) &&
+                (this.cards[secondCardIterator].suit === this.cards[thirdCardIterator].suit) &&
+                (this.cards[thirdCardIterator].suit === this.cards[fourthCardIterator].suit) &&
+                (this.cards[fourthCardIterator].suit === this.cards[fifthCardIterator].suit) &&
+                (this.cards[firstCardIterator].rank === ACE) &&
+                (this.cards[secondCardIterator].rank === KING) &&
+                (this.cards[fourthCardIterator].rank === QUEEN) &&
+                (this.cards[thirdCardIterator].rank === JACK) &&
+                (this.cards[fifthCardIterator].rank === TEN)) {
+                return true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
 }
 
 // ↓↓↓ Uncomment this for running on node.js ↓↓↓
