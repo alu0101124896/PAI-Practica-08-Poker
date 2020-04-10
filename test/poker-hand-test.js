@@ -192,5 +192,15 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.cards.length).to.be.equal(5);
       expect(myPokerHand.hasStraightFlush()).to.be.equal(true);
     });
+
+    it('Has royal flush', () => {
+      myPokerHand.addCard(new Card(SPADES, TEN));
+      myPokerHand.addCard(new Card(SPADES, QUEEN));
+      myPokerHand.addCard(new Card(SPADES, ACE));
+      myPokerHand.addCard(new Card(SPADES, JACK));
+      myPokerHand.addCard(new Card(SPADES, KING));
+      expect(myPokerHand.cards.length).to.be.equal(5);
+      expect(myPokerHand.hasRoyalFlush()).to.be.equal(true);
+    });
   });
 });

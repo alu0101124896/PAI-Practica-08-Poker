@@ -18,6 +18,10 @@ import { Hand_ as _Hand } from './hand.js';
 const Hand = _Hand;
 
 const ACE = 14;
+const KING = 13;
+const QUEEN = 12;
+const JACK = 11;
+const TEN = 10;
 const TWO = 2;
 
 // ↑↑↑ Uncomment this for running on node.js ↑↑↑
