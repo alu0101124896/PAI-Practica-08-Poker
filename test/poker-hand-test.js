@@ -202,5 +202,16 @@ describe('Poker Hand Class', () => {
       expect(myPokerHand.cards.length).to.be.equal(5);
       expect(myPokerHand.hasRoyalFlush()).to.be.equal(true);
     });
+
+    it('Classifies hand values', () => {
+      myPokerHand.addCard(new Card(HEARTS, NINE));
+      myPokerHand.addCard(new Card(DIAMONDS, QUEEN));
+      myPokerHand.addCard(new Card(CLUBS, QUEEN));
+      myPokerHand.addCard(new Card(CLUBS, NINE));
+      myPokerHand.addCard(new Card(HEARTS, QUEEN));
+      expect(myPokerHand.cards.length).to.be.equal(5);
+      myPokerHand.classify();
+      expect(myPokerHand.label).to.be.equal('full house');
+    });
   });
 });

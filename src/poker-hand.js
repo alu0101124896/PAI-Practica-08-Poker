@@ -220,9 +220,9 @@ class PokerHand extends Hand {
   }
 
   /**
-   * @description Function that searchs for a flush in the hand
+   * @description Function that searchs for a straight flush in the hand
    *
-   * @returns {boolean} Returns true if a flush is found
+   * @returns {boolean} Returns true if a straight flush is found
    * @memberof PokerHand
    */
   hasStraightFlush() {
@@ -257,9 +257,9 @@ class PokerHand extends Hand {
   }
 
   /**
-   * @description Function that searchs for a flush in the hand
+   * @description Function that searchs for a royal flush in the hand
    *
-   * @returns {boolean} Returns true if a flush is found
+   * @returns {boolean} Returns true if a royal flush is found
    * @memberof PokerHand
    */
   hasRoyalFlush() {
