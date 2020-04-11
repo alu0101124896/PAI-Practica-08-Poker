@@ -1,0 +1,52 @@
+[
+  {
+    "handValue": "Royal Flush",
+    "timesAppeared": 4,
+    "appereancePercentage": 0.00005714285714285714
+  },
+  {
+    "handValue": "Straight Flush",
+    "timesAppeared": 16,
+    "appereancePercentage": 0.00022857142857142857
+  },
+  {
+    "handValue": "Four of a Kind",
+    "timesAppeared": 78,
+    "appereancePercentage": 0.0011142857142857144
+  },
+  {
+    "handValue": "Full House",
+    "timesAppeared": 1862,
+    "appereancePercentage": 0.0266
+  },
+  {
+    "handValue": "Flush",
+    "timesAppeared": 2067,
+    "appereancePercentage": 0.02952857142857143
+  },
+  {
+    "handValue": "Straight",
+    "timesAppeared": 3230,
+    "appereancePercentage": 0.046142857142857145
+  },
+  {
+    "handValue": "Three of a Kind",
+    "timesAppeared": 3467,
+    "appereancePercentage": 0.04952857142857143
+  },
+  {
+    "handValue": "Two Pair",
+    "timesAppeared": 16507,
+    "appereancePercentage": 0.23581428571428573
+  },
+  {
+    "handValue": "Pair",
+    "timesAppeared": 30664,
+    "appereancePercentage": 0.43805714285714287
+  },
+  {
+    "handValue": "Nothing",
+    "timesAppeared": 12105,
+    "appereancePercentage": 0.17292857142857143
+  }
+]
