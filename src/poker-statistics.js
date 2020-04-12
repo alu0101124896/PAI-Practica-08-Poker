@@ -9,19 +9,26 @@
 
 "use strict";
 
+let ClassPokerHandOnPokerStatistics;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassPokerHandOnPokerStatistics = require('./poker-hand.js').PokerHand;
+} else { // Execution in browser
+  ClassPokerHandOnPokerStatistics = PokerHand;
+}
+
 const LINE_WIDTH = 3;
 const BLACK = 'black';
 const FONT = "30px Arial";
 
 /**
- * @description Function that draws the lines of the table
+ * @description Function that draws the lines of the table in browser
  *
  * @param {number} numOfRows - Number of rows of the table
  * @param {number} rowHeight - Pixels row height
  * @param {*} CONTEXT - Canvas context
  * @param {*} CANVAS - Canvas
  */
-function drawLines(numOfRows, rowHeight, CONTEXT, CANVAS) {
+function drawLinesBrowser(numOfRows, rowHeight, CONTEXT, CANVAS) {
   CONTEXT.beginPath();
   CONTEXT.moveTo(CANVAS.width / 3, 0);
   CONTEXT.lineTo(CANVAS.width / 3, CANVAS.height);
@@ -47,23 +54,23 @@ function drawLines(numOfRows, rowHeight, CONTEXT, CANVAS) {
 }
 
 /**
- * @description Function that prints the statistics table
+ * @description Function that prints the statistics table in browser
  *
  * @param {*} CONTEXT - Canvas context
  * @param {*} CANVAS - Canvas
  */
-function printStatistics(CONTEXT, CANVAS) {
+function printStatisticsBrowser(CONTEXT, CANVAS) {
   const NUM_OF_HANDS = 7;
   const NUM_OF_CARDS_BY_HAND = 7;
   const NUM_OF_PLAYS = 1000;
 
-  let statistics = PokerHand.statistics(NUM_OF_HANDS, NUM_OF_CARDS_BY_HAND, NUM_OF_PLAYS);
+  let statistics = ClassPokerHandOnPokerStatistics.statistics(NUM_OF_HANDS, NUM_OF_CARDS_BY_HAND, NUM_OF_PLAYS);
   console.log(statistics);
 
   const NUM_OF_ROWS = statistics.length;
 
   let rowHeight = CANVAS.height / NUM_OF_ROWS;
-  drawLines(NUM_OF_ROWS, rowHeight, CONTEXT, CANVAS);
+  drawLinesBrowser(NUM_OF_ROWS, rowHeight, CONTEXT, CANVAS);
 
   for (let rowIterator = 0; rowIterator < NUM_OF_ROWS; rowIterator++) {
     CONTEXT.fillStyle = BLACK;
@@ -75,15 +82,49 @@ function printStatistics(CONTEXT, CANVAS) {
 }
 
 /**
- * @description Function that starts the execution of the progran
+ * @description Function that starts the execution of the program in browser
  */
-function main() {
+function mainBrowser() {
   const CANVAS = document.getElementById("canvas");
   if (CANVAS.getContext) {
     const CONTEXT = CANVAS.getContext("2d");
     CANVAS.width = window.innerWidth - 100;
     CANVAS.height = window.innerHeight - 175;
 
-    printStatistics(CONTEXT, CANVAS);
+    printStatisticsBrowser(CONTEXT, CANVAS);
   }
+}
+
+/**
+ * @description Function that prints the statistics table in node
+ */
+function printStatisticsNode() {
+  const fs = require('fs');
+
+  const NUM_OF_HANDS = 7;
+  const NUM_OF_CARDS_BY_HAND = 7;
+  const NUM_OF_PLAYS = 1000;
+
+  let statistics = ClassPokerHandOnPokerStatistics.statistics(NUM_OF_HANDS, NUM_OF_CARDS_BY_HAND, NUM_OF_PLAYS);
+  console.table(statistics);
+
+  fs.writeFile('./src/poker-statistics.json', JSON.stringify(statistics), err => {
+    if (err) throw err;
+    console.log('Fichero json creado con exito.');
+  });
+}
+
+/**
+ * @description Function that starts the execution of the program
+ */
+function main() {
+  if (typeof require !== 'undefined') { // Execution in node
+    printStatisticsNode();
+  } else { // Execution in browser
+    mainBrowser();
+  }
+}
+
+if (typeof require !== 'undefined') { // Execution in node
+  printStatisticsNode();
 }

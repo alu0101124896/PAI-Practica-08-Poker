@@ -37,44 +37,48 @@
 
 "use strict";
 
-// ↓↓↓ Uncomment this for running on node.js ↓↓↓
+let ClassCardOnDeck;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassCardOnDeck = require('./card.js').Card;
+} else { // Execution in browser
+  ClassCardOnDeck = Card;
+}
 
-// import { Card_ as _Card } from './card.js';
-// const Card = _Card;
+let ClassHandOnDeck;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassHandOnDeck = require('./hand.js').Hand;
+} else { // Execution in browser
+  ClassHandOnDeck = Hand;
+}
 
-// import { Hand_ as _Hand } from './hand.js';
-// const Hand = _Hand;
+const SPADES_ON_DECK = 4;
+const HEARTS_ON_DECK = 3;
+const DIAMONDS_ON_DECK = 2;
+const CLUBS_ON_DECK = 1;
 
-// const SPADES = 4;
-// const HEARTS = 3;
-// const DIAMONDS = 2;
-// const CLUBS = 1;
+const ACE_ON_DECK = 14;
+const KING_ON_DECK = 13;
+const QUEEN_ON_DECK = 12;
+const JACK_ON_DECK = 11;
+const TEN_ON_DECK = 10;
+const NINE_ON_DECK = 9;
+const EIGHT_ON_DECK = 8;
+const SEVEN_ON_DECK = 7;
+const SIX_ON_DECK = 6;
+const FIVE_ON_DECK = 5;
+const FOUR_ON_DECK = 4;
+const THREE_ON_DECK = 3;
+const TWO_ON_DECK = 2;
 
-// const ACE = 14;
-// const KING = 13;
-// const QUEEN = 12;
-// const JACK = 11;
-// const TEN = 10;
-// const NINE = 9;
-// const EIGHT = 8;
-// const SEVEN = 7;
-// const SIX = 6;
-// const FIVE = 5;
-// const FOUR = 4;
-// const THREE = 3;
-// const TWO = 2;
-
-// ↑↑↑ Uncomment this for running on node.js ↑↑↑
-
-const SUITS = [CLUBS, DIAMONDS, HEARTS, SPADES];
-const RANKS = [TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE];
+const SUITS_ON_DECK = [CLUBS_ON_DECK, DIAMONDS_ON_DECK, HEARTS_ON_DECK, SPADES_ON_DECK];
+const RANKS_ON_DECK = [TWO_ON_DECK, THREE_ON_DECK, FOUR_ON_DECK, FIVE_ON_DECK, SIX_ON_DECK, SEVEN_ON_DECK, EIGHT_ON_DECK, NINE_ON_DECK, TEN_ON_DECK, JACK_ON_DECK, QUEEN_ON_DECK, KING_ON_DECK, ACE_ON_DECK];
 
 /**
  * @description Class representing a deck of cards
  *
  * @class Deck
  */
-class Deck extends Hand {
+class Deck extends ClassHandOnDeck {
 
   /**
    * @description Constructor that creates an instance of a deck.
@@ -82,10 +86,10 @@ class Deck extends Hand {
    * @memberof Deck
    */
   constructor(label = '') {
-    super(label, SUITS.length * RANKS.length);
-    SUITS.forEach(suit => {
-      RANKS.forEach(rank => {
-        this.cards.push(new Card(suit, rank));
+    super(label, SUITS_ON_DECK.length * RANKS_ON_DECK.length);
+    SUITS_ON_DECK.forEach(suit => {
+      RANKS_ON_DECK.forEach(rank => {
+        this.cards.push(new ClassCardOnDeck(suit, rank));
       });
     });
   }
@@ -153,7 +157,7 @@ class Deck extends Hand {
     const PIVOT_CARD = this.cards[highIndex];
     let firstIterator = lowIndex;
     for (let secondIterator = lowIndex; secondIterator &lt; highIndex; secondIterator++) {
-      const HIGHEST_CARD = Card.compare(PIVOT_CARD, this.cards[secondIterator]);
+      const HIGHEST_CARD = ClassCardOnDeck.compare(PIVOT_CARD, this.cards[secondIterator]);
       if (HIGHEST_CARD === PIVOT_CARD) {
         this.swap(firstIterator, secondIterator);
         firstIterator++;
@@ -181,11 +185,9 @@ class Deck extends Hand {
   }
 }
 
-// ↓↓↓ Uncomment this for running on node.js ↓↓↓
-
-// export const Deck_ = Deck;
-
-// ↑↑↑ Uncomment this for running on node.js ↑↑↑
+if (typeof exports !== 'undefined') { // Execution in node
+  exports.Deck = Deck;
+}
 </code></pre>
         </article>
     </section>
@@ -196,13 +198,13 @@ class Deck extends Hand {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Card.html">Card</a></li><li><a href="Card.Card.html">Card</a></li><li><a href="Deck.html">Deck</a></li><li><a href="Deck.Deck.html">Deck</a></li><li><a href="Hand.html">Hand</a></li><li><a href="Hand.Hand.html">Hand</a></li><li><a href="PokerHand.html">PokerHand</a></li><li><a href="PokerHand.PokerHand.html">PokerHand</a></li></ul><h3>Global</h3><ul><li><a href="global.html#drawLines">drawLines</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#printHand">printHand</a></li><li><a href="global.html#printNoStraights">printNoStraights</a></li><li><a href="global.html#printStatistics">printStatistics</a></li><li><a href="global.html#searchForStraights">searchForStraights</a></li><li><a href="global.html#sevenCardsSevenHands">sevenCardsSevenHands</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Card.html">Card</a></li><li><a href="Card.Card.html">Card</a></li><li><a href="Deck.html">Deck</a></li><li><a href="Deck.Deck.html">Deck</a></li><li><a href="Hand.html">Hand</a></li><li><a href="Hand.Hand.html">Hand</a></li><li><a href="PokerHand.html">PokerHand</a></li><li><a href="PokerHand.PokerHand.html">PokerHand</a></li></ul><h3>Global</h3><ul><li><a href="global.html#drawLinesBrowser">drawLinesBrowser</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#mainBrowser">mainBrowser</a></li><li><a href="global.html#printHand">printHand</a></li><li><a href="global.html#printNoStraights">printNoStraights</a></li><li><a href="global.html#printStatisticsBrowser">printStatisticsBrowser</a></li><li><a href="global.html#printStatisticsNode">printStatisticsNode</a></li><li><a href="global.html#searchForStraightsBrowser">searchForStraightsBrowser</a></li><li><a href="global.html#searchForStraightsNode">searchForStraightsNode</a></li><li><a href="global.html#sevenCardsSevenHandsBrowser">sevenCardsSevenHandsBrowser</a></li><li><a href="global.html#sevenCardsSevenHandsNode">sevenCardsSevenHandsNode</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sat Apr 11 2020 14:22:20 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sun Apr 12 2020 14:25:53 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

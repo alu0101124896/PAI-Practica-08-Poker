@@ -9,32 +9,33 @@
 
 "use strict";
 
-// ↓↓↓ Uncomment this for running on node.js ↓↓↓
+let ClassDeckOnPokerHand;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassDeckOnPokerHand = require('./deck.js').Deck;
+} else { // Execution in browser
+  ClassDeckOnPokerHand = Deck;
+}
 
-// import { Card_ as _Card } from './card.js';
-// const Card = _Card;
+let ClassHandOnPokerHand;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassHandOnPokerHand = require('./hand.js').Hand;
+} else { // Execution in browser
+  ClassHandOnPokerHand = Hand;
+}
 
-// import { Deck_ as _Deck } from '../src/deck.js';
-// const Deck = _Deck;
-
-// import { Hand_ as _Hand } from './hand.js';
-// const Hand = _Hand;
-
-// const ACE = 14;
-// const KING = 13;
-// const QUEEN = 12;
-// const JACK = 11;
-// const TEN = 10;
-// const TWO = 2;
-
-// ↑↑↑ Uncomment this for running on node.js ↑↑↑
+const ACE_ON_POKER_HAND = 14;
+const KING_ON_POKER_HAND = 13;
+const QUEEN_ON_POKER_HAND = 12;
+const JACK_ON_POKER_HAND = 11;
+const TEN_ON_POKER_HAND = 10;
+const TWO_ON_POKER_HAND = 2;
 
 /**
  * @description Class representing a poker hand of 7 cards
  *
  * @class PokerHand
  */
-class PokerHand extends Hand {
+class PokerHand extends ClassHandOnPokerHand {
 
   /**
    * @description Constructor that creates an instance of a poker hand.
@@ -121,8 +122,8 @@ class PokerHand extends Hand {
                 (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) &&
                 (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
                 return true;
-              } else if ((this.cards[firstCardIterator].rank === ACE) &&
-                (this.cards[secondCardIterator].rank === TWO) &&
+              } else if ((this.cards[firstCardIterator].rank === ACE_ON_POKER_HAND) &&
+                (this.cards[secondCardIterator].rank === TWO_ON_POKER_HAND) &&
                 (this.cards[secondCardIterator].rank === (this.cards[thirdCardIterator].rank - 1)) &&
                 (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) &&
                 (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
@@ -246,8 +247,8 @@ class PokerHand extends Hand {
                   (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) &&
                   (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
                   return true;
-                } else if ((this.cards[firstCardIterator].rank === ACE) &&
-                  (this.cards[secondCardIterator].rank === TWO) &&
+                } else if ((this.cards[firstCardIterator].rank === ACE_ON_POKER_HAND) &&
+                  (this.cards[secondCardIterator].rank === TWO_ON_POKER_HAND) &&
                   (this.cards[secondCardIterator].rank === (this.cards[thirdCardIterator].rank - 1)) &&
                   (this.cards[thirdCardIterator].rank === (this.cards[fourthCardIterator].rank - 1)) &&
                   (this.cards[fourthCardIterator].rank === (this.cards[fifthCardIterator].rank - 1))) {
@@ -278,11 +279,11 @@ class PokerHand extends Hand {
                 (this.cards[secondCardIterator].suit === this.cards[thirdCardIterator].suit) &&
                 (this.cards[thirdCardIterator].suit === this.cards[fourthCardIterator].suit) &&
                 (this.cards[fourthCardIterator].suit === this.cards[fifthCardIterator].suit) &&
-                (this.cards[firstCardIterator].rank === ACE) &&
-                (this.cards[secondCardIterator].rank === KING) &&
-                (this.cards[fourthCardIterator].rank === QUEEN) &&
-                (this.cards[thirdCardIterator].rank === JACK) &&
-                (this.cards[fifthCardIterator].rank === TEN)) {
+                (this.cards[firstCardIterator].rank === ACE_ON_POKER_HAND) &&
+                (this.cards[secondCardIterator].rank === KING_ON_POKER_HAND) &&
+                (this.cards[fourthCardIterator].rank === QUEEN_ON_POKER_HAND) &&
+                (this.cards[thirdCardIterator].rank === JACK_ON_POKER_HAND) &&
+                (this.cards[fifthCardIterator].rank === TEN_ON_POKER_HAND)) {
                 return true;
               }
             }
@@ -384,7 +385,7 @@ class PokerHand extends Hand {
     ]
 
     for (let handsIterator = 0; handsIterator < numOfPlays; handsIterator++) {
-      let deck = new Deck();
+      let deck = new ClassDeckOnPokerHand();
       let hands = [];
       for (let handsIterator = 0; handsIterator < numOfHands; handsIterator++) {
         hands.push(new PokerHand('', numOfCardsByHand));
@@ -426,8 +427,6 @@ class PokerHand extends Hand {
   }
 }
 
-// ↓↓↓ Uncomment this for running on node.js ↓↓↓
-
-// export const PokerHand_ = PokerHand;
-
-// ↑↑↑ Uncomment this for running on node.js ↑↑↑
+if (typeof exports !== 'undefined') { // Execution in node
+  exports.PokerHand = PokerHand;
+}

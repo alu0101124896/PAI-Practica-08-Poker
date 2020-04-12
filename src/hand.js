@@ -9,12 +9,12 @@
 
 "use strict";
 
-// ↓↓↓ Uncomment this for running on node.js ↓↓↓
-
-// import { Card_ as _Card } from './card.js';
-// const Card = _Card;
-
-// ↑↑↑ Uncomment this for running on node.js ↑↑↑
+let ClassCardOnHand;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassCardOnHand = require('./card.js').Card;
+} else { // Execution in browser
+  ClassCardOnHand = Card;
+}
 
 /**
  * @description Class representing a hand of cards
@@ -52,12 +52,12 @@ class Hand {
   /**
    * @description Function that adds a given card at the end of the hand
    *
-   * @param {Card} newCard - Card to be added to the end of the hand
+   * @param {ClassCardOnHand} newCard - Card to be added to the end of the hand
    * @returns {boolean} Returns true if success and false if failed
    * @memberof Hand
    */
   addCard(newCard) {
-    if (newCard instanceof Card) {
+    if (newCard instanceof ClassCardOnHand) {
       if (this.cards.length < this.maxCards) {
         this.cards.push(newCard);
         return true;
@@ -74,7 +74,7 @@ class Hand {
   /**
    * @description Function that removes the first card from the hand and returns it
    *
-   * @returns {Card} Returns the first card of the hand
+   * @returns {ClassCardOnHand} Returns the first card of the hand
    * @memberof Deck
    */
   popCard() {
@@ -89,8 +89,8 @@ class Hand {
   /**
    * @description Function that removes a given card from the hand and returns it
    *
-   * @param {Card} cardToPop - Card to be removed from the hand
-   * @returns {Card} Returns the removed card from the hand
+   * @param {ClassCardOnHand} cardToPop - Card to be removed from the hand
+   * @returns {ClassCardOnHand} Returns the removed card from the hand
    * @memberof Hand
    */
   removeCard(cardToPop) {
@@ -129,8 +129,6 @@ class Hand {
   }
 }
 
-// ↓↓↓ Uncomment this for running on node.js ↓↓↓
-
-// export const Hand_ = Hand;
-
-// ↑↑↑ Uncomment this for running on node.js ↑↑↑
+if (typeof exports !== 'undefined') { // Execution in node
+  exports.Hand = Hand;
+}

@@ -9,102 +9,106 @@
 
 "use strict";
 
-// ↓↓↓ Uncomment this for running on node.js ↓↓↓
+let expectOnCardTest;
+if (typeof require !== 'undefined') { // Execution in node
+  expectOnCardTest = require('chai').expect;
+} else { // Execution in browser
+  expectOnCardTest = expect;
+}
 
-// import { expect as _expect } from 'chai';
-// const expect = _expect;
+let ClassCardOnCardTest;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassCardOnCardTest = require('../src/card.js').Card;
+} else { // Execution in browser
+  ClassCardOnCardTest = Card;
+}
 
-// import { Card_ as _Card } from '../src/card.js';
-// const Card = _Card;
+const SPADES_ON_CARD_TEST = 4;
+const HEARTS_ON_CARD_TEST = 3;
+const DIAMONDS_ON_CARD_TEST = 2;
+const CLUBS_ON_CARD_TEST = 1;
 
-// const SPADES = 4;
-// const HEARTS = 3;
-// const DIAMONDS = 2;
-// const CLUBS = 1;
+const ACE_ON_CARD_TEST = 14;
+const KING_ON_CARD_TEST = 13;
+const QUEEN_ON_CARD_TEST = 12;
+const JACK_ON_CARD_TEST = 11;
+const TEN_ON_CARD_TEST = 10;
+const NINE_ON_CARD_TEST = 9;
+const EIGHT_ON_CARD_TEST = 8;
+const SEVEN_ON_CARD_TEST = 7;
+const SIX_ON_CARD_TEST = 6;
+const FIVE_ON_CARD_TEST = 5;
+const FOUR_ON_CARD_TEST = 4;
+const THREE_ON_CARD_TEST = 3;
+const TWO_ON_CARD_TEST = 2;
 
-// const ACE = 14;
-// const KING = 13;
-// const QUEEN = 12;
-// const JACK = 11;
-// const TEN = 10;
-// const NINE = 9;
-// const EIGHT = 8;
-// const SEVEN = 7;
-// const SIX = 6;
-// const FIVE = 5;
-// const FOUR = 4;
-// const THREE = 3;
-// const TWO = 2;
-
-// ↑↑↑ Uncomment this for running on node.js ↑↑↑
-
-describe('Card Class', () => {
+describe('ClassCardOnCardTest Class', () => {
   describe('Default properties', () => {
-    const MY_CARD = new Card();
+    const MY_CARD = new ClassCardOnCardTest();
 
-    it('Card has a suit', () => {
-      expect(MY_CARD).to.have.property('suit');
-      expect(MY_CARD.suit).to.be.a('number');
+    it('ClassCardOnCardTest has a suit', () => {
+      expectOnCardTest(MY_CARD).to.have.property('suit');
+      expectOnCardTest(MY_CARD.suit).to.be.a('number');
     });
 
-    it('Card has a rank', () => {
-      expect(MY_CARD).to.have.property('rank');
-      expect(MY_CARD.rank).to.be.a('number');
+    it('ClassCardOnCardTest has a rank', () => {
+      expectOnCardTest(MY_CARD).to.have.property('rank');
+      expectOnCardTest(MY_CARD.rank).to.be.a('number');
     });
 
     it('Default suit is Clubs', () => {
-      expect(MY_CARD.suit).to.be.equal(CLUBS);
+      expectOnCardTest(MY_CARD.suit).to.be.equal(CLUBS_ON_CARD_TEST);
     });
 
     it('Default rank is Two', () => {
-      expect(MY_CARD.rank).to.be.equal(TWO);
+      expectOnCardTest(MY_CARD.rank).to.be.equal(TWO_ON_CARD_TEST);
     });
   });
 
   describe('Non default property values', () => {
-    const MY_CARD = new Card(DIAMONDS, ACE)
+    const MY_CARD = new ClassCardOnCardTest(DIAMONDS_ON_CARD_TEST, ACE_ON_CARD_TEST)
 
     it('Modifies default suit correctly', () => {
-      expect(MY_CARD.suit).to.be.equal(DIAMONDS);
+      expectOnCardTest(MY_CARD.suit).to.be.equal(DIAMONDS_ON_CARD_TEST);
     });
 
     it('Modifies default rank correctly', () => {
-      expect(MY_CARD.rank).to.be.equal(ACE);
+      expectOnCardTest(MY_CARD.rank).to.be.equal(ACE_ON_CARD_TEST);
     });
   });
 
-  describe('Card to string', () => {
-    const MY_CARD = new Card();
-    const MY_CARD_2 = new Card(DIAMONDS, ACE);
-    const MY_CARD_3 = new Card(5, 20);
+  describe('ClassCardOnCardTest to string', () => {
+    const MY_CARD = new ClassCardOnCardTest();
+    const MY_CARD_2 = new ClassCardOnCardTest(DIAMONDS_ON_CARD_TEST, ACE_ON_CARD_TEST);
+    const MY_CARD_3 = new ClassCardOnCardTest(5, 20);
 
     it('Default values', () => {
-      expect(MY_CARD.toString()).to.be.equal('Two of Clubs');
+      expectOnCardTest(MY_CARD.toString()).to.be.equal('Two of Clubs');
     });
 
     it('Modified values', () => {
-      expect(MY_CARD_2.toString()).to.be.equal('Ace of Diamonds');
+      expectOnCardTest(MY_CARD_2.toString()).to.be.equal('Ace of Diamonds');
     });
 
     it('Unknown values', () => {
-      expect(MY_CARD_3.toString()).to.be.equal('Unknown Rank of Unknown Suit');
+      expectOnCardTest(MY_CARD_3.toString()).to.be.equal('Unknown Rank of Unknown Suit');
     });
   });
 
   describe('Compare', () => {
-    const THREE_OF_SPADES = new Card(SPADES, THREE);
-    const EIGHT_OF_DIAMONDS = new Card(DIAMONDS, EIGHT);
-    const EIGHT_OF_SPADES = new Card(SPADES, EIGHT);
+    const THREE_OF_SPADES = new ClassCardOnCardTest(SPADES_ON_CARD_TEST, THREE_ON_CARD_TEST);
+    const EIGHT_OF_DIAMONDS = new ClassCardOnCardTest(DIAMONDS_ON_CARD_TEST, EIGHT_ON_CARD_TEST);
+    const EIGHT_OF_SPADES = new ClassCardOnCardTest(SPADES_ON_CARD_TEST, EIGHT_ON_CARD_TEST);
 
     it('Tree of Spades > Eight of Diamonds', () => {
-      expect(Card.compare(THREE_OF_SPADES, EIGHT_OF_DIAMONDS)).to.be.deep.equal(THREE_OF_SPADES);
-      expect(Card.compare(EIGHT_OF_DIAMONDS, THREE_OF_SPADES)).to.be.deep.equal(THREE_OF_SPADES);
+      expectOnCardTest(ClassCardOnCardTest.compare(THREE_OF_SPADES, EIGHT_OF_DIAMONDS)).to.be.deep.equal(THREE_OF_SPADES);
+      expectOnCardTest(ClassCardOnCardTest.compare(EIGHT_OF_DIAMONDS, THREE_OF_SPADES)).to.be.deep.equal(THREE_OF_SPADES);
     });
 
 
     it('Eight of Spades > Three of Spades', () => {
-      expect(Card.compare(EIGHT_OF_SPADES, THREE_OF_SPADES)).to.be.deep.equal(EIGHT_OF_SPADES);
-      expect(Card.compare(THREE_OF_SPADES, EIGHT_OF_SPADES)).to.be.deep.equal(EIGHT_OF_SPADES);
+      expectOnCardTest(ClassCardOnCardTest.compare(EIGHT_OF_SPADES, THREE_OF_SPADES)).to.be.deep.equal(EIGHT_OF_SPADES);
+      expectOnCardTest(ClassCardOnCardTest.compare(THREE_OF_SPADES, EIGHT_OF_SPADES)).to.be.deep.equal(EIGHT_OF_SPADES);
     });
   });
 });

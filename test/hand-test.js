@@ -9,150 +9,162 @@
 
 "use strict";
 
-// ↓↓↓ Uncomment this for running on node.js ↓↓↓
+let expectOnHandTest;
+if (typeof require !== 'undefined') { // Execution in node
+  expectOnHandTest = require('chai').expect;
+} else { // Execution in browser
+  expectOnHandTest = expect;
+}
 
-// import { expect as _expect } from 'chai';
-// const expect = _expect;
+let ClassCardOnHandTest;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassCardOnHandTest = require('../src/card.js').Card;
+} else { // Execution in browser
+  ClassCardOnHandTest = Card;
+}
 
-// import { Card_ as _Card } from '../src/card.js';
-// const Card = _Card;
+let ClassHandOnHandTest;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassHandOnHandTest = require('../src/hand.js').Hand;
+} else { // Execution in browser
+  ClassHandOnHandTest = Hand;
+}
 
-// import { Deck_ as _Deck } from '../src/deck.js';
-// const Deck = _Deck;
+let ClassDeckOnHandTest;
+if (typeof require !== 'undefined') { // Execution in node
+  ClassDeckOnHandTest = require('../src/deck.js').Deck;
+} else { // Execution in browser
+  ClassDeckOnHandTest = Deck;
+}
 
-// import { Hand_ as _Hand } from '../src/hand.js';
-// const Hand = _Hand;
+const SPADES_ON_HAND_TEST = 4;
+const HEARTS_ON_HAND_TEST = 3;
+const DIAMONDS_ON_HAND_TEST = 2;
+const CLUBS_ON_HAND_TEST = 1;
 
-// const SPADES = 4;
-// const HEARTS = 3;
-// const DIAMONDS = 2;
-// const CLUBS = 1;
+const ACE_ON_HAND_TEST = 14;
+const KING_ON_HAND_TEST = 13;
+const QUEEN_ON_HAND_TEST = 12;
+const JACK_ON_HAND_TEST = 11;
+const TEN_ON_HAND_TEST = 10;
+const NINE_ON_HAND_TEST = 9;
+const EIGHT_ON_HAND_TEST = 8;
+const SEVEN_ON_HAND_TEST = 7;
+const SIX_ON_HAND_TEST = 6;
+const FIVE_ON_HAND_TEST = 5;
+const FOUR_ON_HAND_TEST = 4;
+const THREE_ON_HAND_TEST = 3;
+const TWO_ON_HAND_TEST = 2;
 
-// const ACE = 14;
-// const KING = 13;
-// const QUEEN = 12;
-// const JACK = 11;
-// const TEN = 10;
-// const NINE = 9;
-// const EIGHT = 8;
-// const SEVEN = 7;
-// const SIX = 6;
-// const FIVE = 5;
-// const FOUR = 4;
-// const THREE = 3;
-// const TWO = 2;
-
-// ↑↑↑ Uncomment this for running on node.js ↑↑↑
-
-describe('Hand Class', () => {
+describe('ClassHandOnHandTest Class', () => {
   describe('Default properties', () => {
     const LABEL = 'my hand';
     const MAX_CARDS = 9;
     let myHand;
 
     beforeEach(() => {
-      myHand = new Hand(LABEL, MAX_CARDS);
+      myHand = new ClassHandOnHandTest(LABEL, MAX_CARDS);
     });
 
-    it('Hand has a label', () => {
-      expect(myHand).to.have.property('label');
-      expect(myHand.label).to.be.a('string');
-      expect(myHand.label).to.be.equal(LABEL);
+    it('ClassHandOnHandTest has a label', () => {
+      expectOnHandTest(myHand).to.have.property('label');
+      expectOnHandTest(myHand.label).to.be.a('string');
+      expectOnHandTest(myHand.label).to.be.equal(LABEL);
     });
 
-    it('Hand has a max number of cards', () => {
-      expect(myHand).to.have.property('maxCards');
-      expect(myHand.maxCards).to.be.a('number');
-      expect(myHand.maxCards).to.be.equal(MAX_CARDS);
+    it('ClassHandOnHandTest has a max number of cards', () => {
+      expectOnHandTest(myHand).to.have.property('maxCards');
+      expectOnHandTest(myHand.maxCards).to.be.a('number');
+      expectOnHandTest(myHand.maxCards).to.be.equal(MAX_CARDS);
     });
 
-    it('Hand has an array of cards', () => {
-      expect(myHand).to.have.property('cards');
-      expect(myHand.cards).to.be.an('array');
-      expect(myHand.cards.length).to.be.equal(0);
+    it('ClassHandOnHandTest has an array of cards', () => {
+      expectOnHandTest(myHand).to.have.property('cards');
+      expectOnHandTest(myHand.cards).to.be.an('array');
+      expectOnHandTest(myHand.cards.length).to.be.equal(0);
     });
   });
 
-  describe('Hand to string', () => {
-    const MY_HAND = new Hand('new hand');
+  describe('ClassHandOnHandTest to string', () => {
+    const MY_HAND = new ClassHandOnHandTest('new hand');
 
     it('Default value', () => {
-      expect(MY_HAND.toString()).to.be.equal('');
+      expectOnHandTest(MY_HAND.toString()).to.be.equal('');
     });
   });
 
-  describe('Hand methods', () => {
-    const TWO_OF_CLUBS = new Card(CLUBS, TWO);
-    const THREE_OF_CLUBS = new Card(CLUBS, THREE);
-    const FOUR_OF_CLUBS = new Card(CLUBS, FOUR);
-    const FIVE_OF_CLUBS = new Card(CLUBS, FIVE);
-    const SIX_OF_CLUBS = new Card(CLUBS, SIX);
-    const SEVEN_OF_CLUBS = new Card(CLUBS, SEVEN);
+  describe('ClassHandOnHandTest methods', () => {
+    const TWO_OF_CLUBS = new ClassCardOnHandTest(CLUBS_ON_HAND_TEST, TWO_ON_HAND_TEST);
+    const THREE_OF_CLUBS = new ClassCardOnHandTest(CLUBS_ON_HAND_TEST, THREE_ON_HAND_TEST);
+    const FOUR_OF_CLUBS = new ClassCardOnHandTest(CLUBS_ON_HAND_TEST, FOUR_ON_HAND_TEST);
+    const FIVE_OF_CLUBS = new ClassCardOnHandTest(CLUBS_ON_HAND_TEST, FIVE_ON_HAND_TEST);
+    const SIX_OF_CLUBS = new ClassCardOnHandTest(CLUBS_ON_HAND_TEST, SIX_ON_HAND_TEST);
+    const SEVEN_OF_CLUBS = new ClassCardOnHandTest(CLUBS_ON_HAND_TEST, SEVEN_ON_HAND_TEST);
 
-    let myDeck = new Deck();
-    let myHand = new Hand('new hand');
-    let myHand2 = new Hand('new hand 2', 7);
+    let myDeck = new ClassDeckOnHandTest();
+    let myHand = new ClassHandOnHandTest('new hand');
+    let myHand2 = new ClassHandOnHandTest('new hand 2', 7);
 
     it('Add a card', () => {
-      expect(myHand.addCard(TWO_OF_CLUBS)).to.be.equal(true);
-      expect(myHand.addCard(THREE_OF_CLUBS)).to.be.equal(true);
-      expect(myHand.addCard(FOUR_OF_CLUBS)).to.be.equal(true);
-      expect(myHand.addCard(FIVE_OF_CLUBS)).to.be.equal(true);
-      expect(myHand.addCard(SIX_OF_CLUBS)).to.be.equal(true);
-      expect(myHand.cards[0]).to.be.deep.equal(TWO_OF_CLUBS);
-      expect(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(SIX_OF_CLUBS);
-      expect(myHand.cards.length).to.be.equal(5);
+      expectOnHandTest(myHand.addCard(TWO_OF_CLUBS)).to.be.equal(true);
+      expectOnHandTest(myHand.addCard(THREE_OF_CLUBS)).to.be.equal(true);
+      expectOnHandTest(myHand.addCard(FOUR_OF_CLUBS)).to.be.equal(true);
+      expectOnHandTest(myHand.addCard(FIVE_OF_CLUBS)).to.be.equal(true);
+      expectOnHandTest(myHand.addCard(SIX_OF_CLUBS)).to.be.equal(true);
+      expectOnHandTest(myHand.cards[0]).to.be.deep.equal(TWO_OF_CLUBS);
+      expectOnHandTest(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(SIX_OF_CLUBS);
+      expectOnHandTest(myHand.cards.length).to.be.equal(5);
     });
 
     it('Add a card when hand is full', () => {
-      expect(myHand.addCard(SEVEN_OF_CLUBS)).to.be.equal(false);
-      expect(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(SIX_OF_CLUBS);
-      expect(myHand.cards.length).to.be.equal(5);
+      expectOnHandTest(myHand.addCard(SEVEN_OF_CLUBS)).to.be.equal(false);
+      expectOnHandTest(myHand.cards[myHand.cards.length - 1]).to.be.deep.equal(SIX_OF_CLUBS);
+      expectOnHandTest(myHand.cards.length).to.be.equal(5);
     });
 
     it('Add a "false" card', () => {
-      expect(myHand.addCard(false)).to.be.equal(false);
-      expect(myHand.cards.length).to.be.equal(5);
+      expectOnHandTest(myHand.addCard(false)).to.be.equal(false);
+      expectOnHandTest(myHand.cards.length).to.be.equal(5);
     });
 
     it('Remove a specific card', () => {
-      expect(myHand.removeCard(FIVE_OF_CLUBS)).to.be.deep.equal(FIVE_OF_CLUBS);
-      expect(myHand.removeCard(THREE_OF_CLUBS)).to.be.deep.equal(THREE_OF_CLUBS);
-      expect(myHand.cards.length).to.be.equal(3);
+      expectOnHandTest(myHand.removeCard(FIVE_OF_CLUBS)).to.be.deep.equal(FIVE_OF_CLUBS);
+      expectOnHandTest(myHand.removeCard(THREE_OF_CLUBS)).to.be.deep.equal(THREE_OF_CLUBS);
+      expectOnHandTest(myHand.cards.length).to.be.equal(3);
     });
 
     it('Pop a card', () => {
-      expect(myHand.popCard()).to.be.deep.equal(TWO_OF_CLUBS);
-      expect(myHand.popCard()).to.be.deep.equal(FOUR_OF_CLUBS);
-      expect(myHand.popCard()).to.be.deep.equal(SIX_OF_CLUBS);
-      expect(myHand.cards.length).to.be.equal(0);
+      expectOnHandTest(myHand.popCard()).to.be.deep.equal(TWO_OF_CLUBS);
+      expectOnHandTest(myHand.popCard()).to.be.deep.equal(FOUR_OF_CLUBS);
+      expectOnHandTest(myHand.popCard()).to.be.deep.equal(SIX_OF_CLUBS);
+      expectOnHandTest(myHand.cards.length).to.be.equal(0);
     });
 
     it('Remove a card when hand is empty', () => {
-      expect(myHand.removeCard(THREE_OF_CLUBS)).to.be.equal(false);
-      expect(myHand.cards.length).to.be.equal(0);
+      expectOnHandTest(myHand.removeCard(THREE_OF_CLUBS)).to.be.equal(false);
+      expectOnHandTest(myHand.cards.length).to.be.equal(0);
     });
 
     it('Pop a card when hand is empty', () => {
-      expect(myHand.popCard()).to.be.equal(false);
-      expect(myHand.cards.length).to.be.equal(0);
+      expectOnHandTest(myHand.popCard()).to.be.equal(false);
+      expectOnHandTest(myHand.cards.length).to.be.equal(0);
     });
 
     it('Move cards', () => {
-      Hand.moveCards(myDeck, 5, myHand);
-      expect(myHand.cards[0]).to.be.deep.equal(TWO_OF_CLUBS);
-      expect(myHand.cards[1]).to.be.deep.equal(THREE_OF_CLUBS);
-      expect(myHand.cards.length).to.be.equal(5);
+      ClassHandOnHandTest.moveCards(myDeck, 5, myHand);
+      expectOnHandTest(myHand.cards[0]).to.be.deep.equal(TWO_OF_CLUBS);
+      expectOnHandTest(myHand.cards[1]).to.be.deep.equal(THREE_OF_CLUBS);
+      expectOnHandTest(myHand.cards.length).to.be.equal(5);
     });
 
     it('Move a card when source hand is empty', () => {
-      Hand.moveCards(myHand, 6, myHand2);
-      expect(myHand.cards.length).to.be.equal(0);
+      ClassHandOnHandTest.moveCards(myHand, 6, myHand2);
+      expectOnHandTest(myHand.cards.length).to.be.equal(0);
     });
 
     it('Move a card when destiny hand is full', () => {
-      Hand.moveCards(myDeck, 3, myHand2);
-      expect(myHand2.cards.length).to.be.equal(7);
+      ClassHandOnHandTest.moveCards(myDeck, 3, myHand2);
+      expectOnHandTest(myHand2.cards.length).to.be.equal(7);
     });
   });
 });

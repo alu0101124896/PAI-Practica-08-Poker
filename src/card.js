@@ -9,24 +9,24 @@
 
 "use strict";
 
-const SPADES = 4;
-const HEARTS = 3;
-const DIAMONDS = 2;
-const CLUBS = 1;
+const SPADES_ON_CARD = 4;
+const HEARTS_ON_CARD = 3;
+const DIAMONDS_ON_CARD = 2;
+const CLUBS_ON_CARD = 1;
 
-const ACE = 14;
-const KING = 13;
-const QUEEN = 12;
-const JACK = 11;
-const TEN = 10;
-const NINE = 9;
-const EIGHT = 8;
-const SEVEN = 7;
-const SIX = 6;
-const FIVE = 5;
-const FOUR = 4;
-const THREE = 3;
-const TWO = 2;
+const ACE_ON_CARD = 14;
+const KING_ON_CARD = 13;
+const QUEEN_ON_CARD = 12;
+const JACK_ON_CARD = 11;
+const TEN_ON_CARD = 10;
+const NINE_ON_CARD = 9;
+const EIGHT_ON_CARD = 8;
+const SEVEN_ON_CARD = 7;
+const SIX_ON_CARD = 6;
+const FIVE_ON_CARD = 5;
+const FOUR_ON_CARD = 4;
+const THREE_ON_CARD = 3;
+const TWO_ON_CARD = 2;
 
 /**
  * @description Class representing a card
@@ -40,7 +40,7 @@ class Card {
    *
    * @memberof Card
    */
-  constructor(suit = CLUBS, rank = TWO) {
+  constructor(suit = CLUBS_ON_CARD, rank = TWO_ON_CARD) {
     this.suit = suit;
     this.rank = rank;
   }
@@ -55,43 +55,43 @@ class Card {
     let rankString = '';
     let suitString = '';
     switch (this.rank) {
-      case ACE:
+      case ACE_ON_CARD:
         rankString = 'Ace';
         break;
-      case KING:
+      case KING_ON_CARD:
         rankString = 'King';
         break;
-      case QUEEN:
+      case QUEEN_ON_CARD:
         rankString = 'Queen';
         break;
-      case JACK:
+      case JACK_ON_CARD:
         rankString = 'Jack';
         break;
-      case TEN:
+      case TEN_ON_CARD:
         rankString = 'Ten';
         break;
-      case NINE:
+      case NINE_ON_CARD:
         rankString = 'Nine';
         break;
-      case EIGHT:
+      case EIGHT_ON_CARD:
         rankString = 'Eight';
         break;
-      case SEVEN:
+      case SEVEN_ON_CARD:
         rankString = 'Seven';
         break;
-      case SIX:
+      case SIX_ON_CARD:
         rankString = 'Six';
         break;
-      case FIVE:
+      case FIVE_ON_CARD:
         rankString = 'Five';
         break;
-      case FOUR:
+      case FOUR_ON_CARD:
         rankString = 'Four';
         break;
-      case THREE:
+      case THREE_ON_CARD:
         rankString = 'Three';
         break;
-      case TWO:
+      case TWO_ON_CARD:
         rankString = 'Two';
         break;
 
@@ -100,16 +100,16 @@ class Card {
         break;
     }
     switch (this.suit) {
-      case SPADES:
+      case SPADES_ON_CARD:
         suitString = 'Spades';
         break;
-      case HEARTS:
+      case HEARTS_ON_CARD:
         suitString = 'Hearts';
         break;
-      case DIAMONDS:
+      case DIAMONDS_ON_CARD:
         suitString = 'Diamonds';
         break;
-      case CLUBS:
+      case CLUBS_ON_CARD:
         suitString = 'Clubs';
         break;
 
@@ -144,8 +144,6 @@ class Card {
   }
 }
 
-// ↓↓↓ Uncomment this for running on node.js ↓↓↓
-
-// export const Card_ = Card;
-
-// ↑↑↑ Uncomment this for running on node.js ↑↑↑
+if (typeof exports !== 'undefined') { // Execution in node
+  exports.Card = Card;
+}
