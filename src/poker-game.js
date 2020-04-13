@@ -10,16 +10,12 @@
 "use strict";
 
 let ClassDeckOnPokerGame;
-if (typeof require !== 'undefined') { // Execution in node
-  ClassDeckOnPokerGame = require('./deck.js').Deck;
-} else { // Execution in browser
-  ClassDeckOnPokerGame = Deck;
-}
-
 let ClassPokerHandOnPokerGame;
 if (typeof require !== 'undefined') { // Execution in node
+  ClassDeckOnPokerGame = require('./deck.js').Deck;
   ClassPokerHandOnPokerGame = require('./poker-hand.js').PokerHand;
 } else { // Execution in browser
+  ClassDeckOnPokerGame = Deck;
   ClassPokerHandOnPokerGame = PokerHand;
 }
 

@@ -10,37 +10,21 @@
 "use strict";
 
 let expectOnPokerHandTest;
-if (typeof require !== 'undefined') { // Execution in node
-  expectOnPokerHandTest = require('chai').expect;
-} else { // Execution in browser
-  expectOnPokerHandTest = expect;
-}
-
 let ClassCardOnPokerHandTest;
-if (typeof require !== 'undefined') { // Execution in node
-  ClassCardOnPokerHandTest = require('../src/card.js').Card;
-} else { // Execution in browser
-  ClassCardOnPokerHandTest = Card;
-}
-
 let ClassHandOnPokerHandTest;
-if (typeof require !== 'undefined') { // Execution in node
-  ClassHandOnPokerHandTest = require('../src/hand.js').Hand;
-} else { // Execution in browser
-  ClassHandOnPokerHandTest = Hand;
-}
-
 let ClassDeckOnPokerHandTest;
-if (typeof require !== 'undefined') { // Execution in node
-  ClassDeckOnPokerHandTest = require('../src/deck.js').Deck;
-} else { // Execution in browser
-  ClassDeckOnPokerHandTest = Deck;
-}
-
 let ClassPokerHandOnPokerHandTest;
 if (typeof require !== 'undefined') { // Execution in node
+  expectOnPokerHandTest = require('chai').expect;
+  ClassCardOnPokerHandTest = require('../src/card.js').Card;
+  ClassHandOnPokerHandTest = require('../src/hand.js').Hand;
+  ClassDeckOnPokerHandTest = require('../src/deck.js').Deck;
   ClassPokerHandOnPokerHandTest = require('../src/poker-hand.js').PokerHand;
 } else { // Execution in browser
+  expectOnPokerHandTest = expect;
+  ClassCardOnPokerHandTest = Card;
+  ClassHandOnPokerHandTest = Hand;
+  ClassDeckOnPokerHandTest = Deck;
   ClassPokerHandOnPokerHandTest = PokerHand;
 }
 

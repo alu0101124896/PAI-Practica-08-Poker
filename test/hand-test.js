@@ -10,30 +10,18 @@
 "use strict";
 
 let expectOnHandTest;
-if (typeof require !== 'undefined') { // Execution in node
-  expectOnHandTest = require('chai').expect;
-} else { // Execution in browser
-  expectOnHandTest = expect;
-}
-
 let ClassCardOnHandTest;
-if (typeof require !== 'undefined') { // Execution in node
-  ClassCardOnHandTest = require('../src/card.js').Card;
-} else { // Execution in browser
-  ClassCardOnHandTest = Card;
-}
-
 let ClassHandOnHandTest;
-if (typeof require !== 'undefined') { // Execution in node
-  ClassHandOnHandTest = require('../src/hand.js').Hand;
-} else { // Execution in browser
-  ClassHandOnHandTest = Hand;
-}
-
 let ClassDeckOnHandTest;
 if (typeof require !== 'undefined') { // Execution in node
+  expectOnHandTest = require('chai').expect;
+  ClassCardOnHandTest = require('../src/card.js').Card;
+  ClassHandOnHandTest = require('../src/hand.js').Hand;
   ClassDeckOnHandTest = require('../src/deck.js').Deck;
 } else { // Execution in browser
+  expectOnHandTest = expect;
+  ClassCardOnHandTest = Card;
+  ClassHandOnHandTest = Hand;
   ClassDeckOnHandTest = Deck;
 }
 

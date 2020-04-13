@@ -10,17 +10,17 @@
 "use strict";
 
 let ClassDeckOnPokerHand;
-if (typeof require !== 'undefined') { // Execution in node
-  ClassDeckOnPokerHand = require('./deck.js').Deck;
-} else { // Execution in browser
-  ClassDeckOnPokerHand = Deck;
-}
-
 let ClassHandOnPokerHand;
 if (typeof require !== 'undefined') { // Execution in node
+  ClassDeckOnPokerHand = require('./deck.js').Deck;
   ClassHandOnPokerHand = require('./hand.js').Hand;
 } else { // Execution in browser
+  ClassDeckOnPokerHand = Deck;
   ClassHandOnPokerHand = Hand;
+}
+
+if (typeof require !== 'undefined') { // Execution in node
+} else { // Execution in browser
 }
 
 const ACE_ON_POKER_HAND = 14;

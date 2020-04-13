@@ -10,16 +10,12 @@
 "use strict";
 
 let expectOnCardTest;
-if (typeof require !== 'undefined') { // Execution in node
-  expectOnCardTest = require('chai').expect;
-} else { // Execution in browser
-  expectOnCardTest = expect;
-}
-
 let ClassCardOnCardTest;
 if (typeof require !== 'undefined') { // Execution in node
+  expectOnCardTest = require('chai').expect;
   ClassCardOnCardTest = require('../src/card.js').Card;
 } else { // Execution in browser
+  expectOnCardTest = expect;
   ClassCardOnCardTest = Card;
 }
 

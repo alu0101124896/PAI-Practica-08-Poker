@@ -10,18 +10,15 @@
 "use strict";
 
 let ClassCardOnDeck;
-if (typeof require !== 'undefined') { // Execution in node
-  ClassCardOnDeck = require('./card.js').Card;
-} else { // Execution in browser
-  ClassCardOnDeck = Card;
-}
-
 let ClassHandOnDeck;
 if (typeof require !== 'undefined') { // Execution in node
+  ClassCardOnDeck = require('./card.js').Card;
   ClassHandOnDeck = require('./hand.js').Hand;
 } else { // Execution in browser
+  ClassCardOnDeck = Card;
   ClassHandOnDeck = Hand;
 }
+
 
 const SPADES_ON_DECK = 4;
 const HEARTS_ON_DECK = 3;
