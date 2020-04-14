@@ -109,5 +109,6 @@ function main() {
     drawRectangle(CONTEXT, CANVAS);
     drawSquare(CONTEXT, CANVAS);
     drawTriangle(CONTEXT, CANVAS);
+
   }
 }
