@@ -65,6 +65,35 @@ function drawRectangle(CONTEXT, CANVAS) {
 }
 
 /**
+ * @description Function that draws a square at the third cuadrant
+ *
+ * @param {*} CONTEXT - Canvas context
+ * @param {*} CANVAS - Canvas
+ */
+function drawSquare(CONTEXT, CANVAS) {
+  CONTEXT.beginPath();
+  CONTEXT.strokeStyle = BLACK;
+  CONTEXT.lineWidth = FIGURES_LINE_WIDTH;
+  CONTEXT.rect(-CANVAS.width * 2.25 / 6, CANVAS.width * 0.75 / 6, CANVAS.width * 1 / 4, CANVAS.width * 1 / 4);
+  CONTEXT.stroke();
+}
+
+/**
+ * @description Function that draws a triangle at the fourth cuadrant
+ *
+ * @param {*} CONTEXT - Canvas context
+ * @param {*} CANVAS - Canvas
+ */
+function drawTriangle(CONTEXT, CANVAS) {
+  CONTEXT.beginPath();
+  CONTEXT.moveTo(triangle.x1, triangle.y1);
+  CONTEXT.lineTo(triangle.x2, triangle.y2);
+  CONTEXT.lineTo(triangle.x3, triangle.y3);
+  CONTEXT.lineTo(triangle.x1, triangle.y1);
+  CONTEXT.stroke();
+}
+
+/**
  * @description Function that starts the execution of the program in browser
  */
 function main() {
@@ -78,5 +107,7 @@ function main() {
     CONTEXT.translate(CANVAS.width / 2, CANVAS.height / 2);
     drawCircle(CONTEXT, CANVAS);
     drawRectangle(CONTEXT, CANVAS);
+    drawSquare(CONTEXT, CANVAS);
+    drawTriangle(CONTEXT, CANVAS);
   }
 }
